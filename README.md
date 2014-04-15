@@ -4,7 +4,8 @@
 Create the *src/Fkl* directory and clone the Franklin bundle with the following instructions into the *src/Fkl/FranklinBundle/* folder:
 
 ``` bash
-mkdir src/Fkl && git clone git@github.com:Afxsoft/franklin-bundle.git FranklinBundle
+mkdir src/Fkl && mkdir src/Fkl
+git clone git@github.com:Afxsoft/franklin-bundle.git FranklinBundle
 ```
 
 Implements the followings instruction in your composer.json file :
