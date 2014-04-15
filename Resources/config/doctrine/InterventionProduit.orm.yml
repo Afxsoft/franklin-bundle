@@ -1,0 +1,23 @@
+Fkl\FranklinBundle\Entity\InterventionProduit:
+    type: entity
+    table: intervention_produit
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO         
+    manyToOne:
+        produit:
+            targetEntity: Produit
+            inversedBy: interventionproduits
+            joinColumn:
+              name: produit_id
+              referencedColumnName: id
+    manyToOne:
+        intervention:
+            targetEntity: Intervention
+            inversedBy: interventionproduits
+            joinColumn:
+              name: intervention_id
+              referencedColumnName: id

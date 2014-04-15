@@ -1,0 +1,18 @@
+Fkl\FranklinBundle\Entity\Categorie:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO         
+    fields:
+        nom:
+            type: string
+            length: 255
+    oneToMany:
+        produits:
+            targetEntity: Produit
+            mappedBy: categorie
+    lifecycleCallbacks: {  }

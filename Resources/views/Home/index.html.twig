@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {% stylesheets 
+            'bundles/fklfranklin/css/flexslider.css'
+            filter='cssrewrite' 
+        %}
+<link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %} 
+{% endblock %}  
+
+{% block body %}
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            <li>
+                <img src="{{ asset('bundles/fklfranklin/images/slideshow/test.jpg') }}" alt=""  />
+                <div class="container">
+                    <p class="slide-title">Entrez dans un univers connecté</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/fklfranklin/images/slideshow/test.jpg') }}"  alt="" />
+                <div class="container">
+                    <p class="slide-title">Entrez dans un univers connecté</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/fklfranklin/images/slideshow/test.jpg') }}" alt="" />
+               <div class="container">
+                    <p class="slide-title">Entrez dans un univers connecté</p>
+                </div>
+            </li>
+            <li>
+                <img src="{{ asset('bundles/fklfranklin/images/slideshow/test.jpg') }}" alt=""  />
+                <div class="container">
+                    <p class="slide-title">Entrez dans un univers connecté</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="container">
+    <h2>NOS PRODUITS</h2>
+    <ul>
+        <li>
+            Prise ET interrupteurs
+            <hr>
+            <a href="#">Voir les produits</a>
+        </li>
+        <li>
+            <img src="" alt=""/>
+        </li>
+        <li>
+            <img src="" alt=""/>
+        </li>
+        <li>
+            <img src="" alt=""/>
+        </li>
+    </ul>
+    <h2>DES SOLUTIONS POUR VOTRE CONFORT</h2>
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts 
+       'bundles/fklfranklin/js/jquery.flexslider-min.js'
+         %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+       {% endjavascripts %}
+
+{% endblock %}
+
+

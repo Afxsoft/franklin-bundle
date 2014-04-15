@@ -1,0 +1,12 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: FklFranklinBundle:Home:index }
+installationpage:
+    pattern:  /installations
+    defaults: { _controller: FklFranklinBundle:Installation:index }
+produitpage:
+    pattern:  /produits
+    defaults: { _controller: FklFranklinBundle:Produit:index }
+contactpage:
+    pattern:  /contact
+    defaults: { _controller: FklFranklinBundle:Contact:index }

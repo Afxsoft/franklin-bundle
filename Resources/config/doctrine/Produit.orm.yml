@@ -1,0 +1,59 @@
+Fkl\FranklinBundle\Entity\Produit:
+    type: entity
+    repositoryClass: Fkl\FranklinBundle\Entity\Repositories\ProduitRepository
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+              
+    fields:
+        ref:
+            type: string
+            length: 200
+            nullable : true
+
+        nom:
+            type: string
+            length: 255    
+            nullable : true
+
+        quantite:
+            type: integer
+            length: 11 
+            nullable : true
+
+        tarif:
+            type: decimal
+            nullable : true
+
+        notice:
+            type : string
+            lenght: 255
+            nullable : true
+
+        description:
+            type : text
+            nullable : true         
+
+            
+    lifecycleCallbacks:
+        prePersist:   [ lifecycleFileUpload ]
+        preUpdate:    [ lifecycleFileUpload ]    
+            
+    manyToOne:
+        categorie:
+            targetEntity: Categorie
+            inversedBy: produits
+            joinColumn:
+              name: categorie_id
+              referencedColumnName: id     
+              
+    oneToMany:
+        images:
+            targetEntity: Image
+            mappedBy: produit
+            cascade: ["persist"]
+    lifecycleCallbacks: {  }
