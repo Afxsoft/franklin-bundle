@@ -1,0 +1,67 @@
+<!DO
+    CTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %} </title>
+        {% stylesheets 
+            '@FklFranklinBundle/Resources/public/css/bootstrap.min.css'
+            '@FklFranklinBundle/Resources/public/css/style.css'
+            filter='cssrewrite' 
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %} 
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <section id="wrapper">
+            <header id="header">
+                <div class="top">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container">
+                            <a href="{{ path('homepage') }}" class="navbar-brand logo-top">Franklin Domotique</a>
+                            <ul class="nav navbar-nav ">
+                                <li><a href="{{ path('installationpage') }}" class="{% if app.request.attributes.get('_route') == 'installationpage' %}active{% endif %}">Nos installations</a></li>
+                                <li><a href="{{ path('produitpage') }}" class="{% if app.request.attributes.get('_route') == 'produitpage' %}active{% endif %}">Nos produits</a></li>
+                                <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Nous contacter</a></li>
+                                <li><a href="{{ path('fos_user_security_login') }}" class="login" ><span class="login-link"></span>Mon compte</a></li>
+                            </ul>                           
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section id="message">
+                {% block message %}{% endblock %}
+            </section>
+            <section id="content">
+                {% block body %}{% endblock %}
+            </section>
+
+            <footer id="footer" class="container">           
+                    <nav class="menu_bottom">
+                        <ul class="nav">
+                            <li><a href="{{ path('homepage') }}" class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %}">Acceuil</a></li>
+                            <li><a href="{{ path('installationpage') }}" class="{% if app.request.attributes.get('_route') == 'installationpage' %}active{% endif %}">Nos installations</a></li>
+                            <li><a href="{{ path('produitpage') }}" class="{% if app.request.attributes.get('_route') == 'produitpage' %}active{% endif %}">Nos produits</a></li>
+                            <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Nous contacter</a></li>
+                            <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Qui somme nous</a></li>
+                        </ul>
+                    </nav>
+                <div class="logo-footer"></div>
+            </footer>
+        </section>
+
+       {% javascripts
+       '@FklFranklinBundle/Resources/public/js/jquery.1.11.0.min.js'
+       '@FklFranklinBundle/Resources/public/js/bootstrap.min.js'
+       '@FklFranklinBundle/Resources/public/js/script.js'
+         %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+       {% endjavascripts %}
+       {% block javascripts %}{% endblock %}
+
+    </body>
+</html>

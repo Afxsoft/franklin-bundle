@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'FklFranklinBundle::base.html.twig' %}
 {% block stylesheets %}
     {% stylesheets 
             'bundles/fklfranklin/css/flexslider.css'
@@ -64,7 +64,7 @@
 
 {% block javascripts %}
 {% javascripts 
-       'bundles/fklfranklin/js/jquery.flexslider-min.js'
+       '@FklFranklinBundle/Resources/public/js/jquery.flexslider-min.js'
          %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
        {% endjavascripts %}

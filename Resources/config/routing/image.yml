@@ -1,0 +1,38 @@
+admin_image_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_image
+        permanent: true
+        
+admin_image:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:Image:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_image_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:Image:show" }
+
+admin_image_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:Image:new" }
+
+admin_image_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:Image:create" }
+    requirements: { _method: post }
+
+admin_image_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:Image:edit" }
+
+admin_image_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:Image:update" }
+    requirements: { _method: post|put }
+
+admin_image_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:Image:delete" }

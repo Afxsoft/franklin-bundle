@@ -1,0 +1,41 @@
+{% extends 'FklFranklinBundle:Product:common.html.twig' %}
+
+{% set title = 'Product'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Id:</label>
+            {{ entity.id }}
+    </li>
+    <li class="list-group-item">
+        <label>Sku:</label>
+            {{ entity.sku }}
+    </li>
+    <li class="list-group-item">
+        <label>Name:</label>
+            {{ entity.name }}
+    </li>
+    <li class="list-group-item">
+        <label>Quantity:</label>
+            {{ entity.quantity }}
+    </li>
+    <li class="list-group-item">
+        <label>Price:</label>
+            {{ entity.price }}
+    </li>
+    <li class="list-group-item">
+        <label>Notice:</label>
+            {{ entity.notice }}
+    </li>
+    <li class="list-group-item">
+        <label>Description:</label>
+            {{ entity.description }}
+    </li>
+    <li class="list-group-item">
+        <label>Updated:</label>
+            {{ entity.updated|date('Y-m-d H:i:s') }}
+    </li>
+</ul>
+
+{% endblock %}

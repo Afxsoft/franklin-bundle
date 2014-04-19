@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'eras medium itc';
+    src: url('../fonts/eras-medium-itc.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'eras light itc';
+    src: url('../fonts/eras-light-itc.ttf') format('truetype');
+}
+html,body,#wrapper{
+    height: 100%;
+    font-family: verdana;
+}
+#wrapper{
+    width: 100%;
+    padding: 0px;
+}
+.navbar{
+    min-height: 90px;
+    border: none;
+    margin-bottom: 0px;
+}
+.flexslider{
+    border: none !important;
+    max-height: 671px;
+    overflow: hidden;
+}
+.flexslider .slides img {
+    max-height: 671px;
+}
+#footer{
+    height: 205px;
+    background: #27110d;
+    padding: 15px 0px 0px 15px;
+    text-align: center;
+    background: -webkit-radial-gradient( top left,#27110d, #4c2d1b);
+    background: -moz-radial-gradient( top left,#27110d, #4c2d1b);
+    background: -o-radial-gradient( top left,#27110d, #4c2d1b);
+    background: radial-gradient( top left,#27110d, #4c2d1b);
+
+}
+#header{
+    position: relative;
+    z-index: 99;
+}
+#header nav{
+    height: 91px;
+    background: #fcf3ea;
+    opacity: 0.9;
+}
+#header .top{
+    height: 124px;
+}
+#header nav .logo-top{
+    display: block;
+    background: url('@FklFranklinBundle/Resources/public/images/template/logo.png') no-repeat;
+    width: 278px;
+    height: 114px;
+    font-size: 0;
+    position: relative;
+    top: 10px;
+
+}
+.login-link{
+    background: url('../images/template/contact-login.png') no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 24px;
+    margin-right: 5px;
+}
+#header nav ul.navbar-nav .login{
+    display: inline-block;
+    float: left;
+
+}
+#header nav ul.navbar-nav{
+    background: #FAE2CA;
+    height: 91px;
+    float: right;
+}
+#header nav ul.navbar-nav li a{
+    height: 91px;
+    line-height: 121px;
+    color: #27110d;
+    font-family: verdana;
+    font-size: 13px;
+    text-transform: uppercase;
+
+}
+header .container{
+    padding-right: 0;
+}
+#header nav ul.navbar-nav li a:hover{
+    background: -webkit-radial-gradient( top left,#27110d, #4c2d1b);
+    background: -moz-radial-gradient( top left,#27110d, #4c2d1b);
+    background: -o-radial-gradient( top left,#27110d, #4c2d1b);
+    background: radial-gradient( top left,#27110d, #4c2d1b);
+    color: #e19c56;
+
+}
+#header nav ul.navbar-nav li a:hover .login-link{
+    background: url('../images/template/contact-login-hover.png') no-repeat;
+    display: inline-block;
+    width: 22px;
+    height: 24px;
+    margin-right: 5px;
+}
+.container{
+    width: 988px;
+}
+section.slider{
+    margin-top: -124px;
+    overflow: hidden;
+}
+.slide-title{
+    font-family:'eras medium itc';
+    font-size: 45.09px;
+    color: #27110d;
+    position: relative;
+    z-index: 99;
+    top: -497px;
+    width: 307px;
+    line-height: 35px;
+}
+.menu_bottom{
+    width: 188px;
+    float: left;
+    border-right: solid 1px #e19C56;
+    margin: 34px 0 0 60px;
+}
+.menu_bottom .nav li a {
+    padding: 0;
+    text-align: left;
+    font-family: 'eras light itc';
+    font-size: 14.95px;
+    color: #e19C56;
+}
+.menu_bottom .nav li a:hover ,.menu_bottom .nav li a.active{
+    font-family: 'eras medium itc';
+
+}
+.menu_bottom .nav li a:hover {
+    background: none;
+}
+.logo-footer{
+    background: url('../images/template/logo-footer.png') no-repeat;
+    width: 278px;
+    height: 114px;
+    float: right;
+    margin: 30px 45px 0 0;
+}
+
+h2{
+    font-size: 45.09px;
+    font-family: 'eras medium itc';
+    background: #e19c56;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+
+    .slide-title{
+        top: -397px;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .slide-title{
+        top: -293px;
+    }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+    .slide-title{
+        top: -135px;
+    }
+}

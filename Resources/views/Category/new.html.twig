@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:Category:common.html.twig' %}
+
+{% set title = 'New Category'|trans %}
+
+{% block errors %}{{ form_errors(form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+{% endblock %}

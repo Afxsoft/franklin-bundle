@@ -1,0 +1,38 @@
+admin_product_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_product
+        permanent: true
+        
+admin_product:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:Product:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_product_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:Product:show" }
+
+admin_product_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:Product:new" }
+
+admin_product_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:Product:create" }
+    requirements: { _method: post }
+
+admin_product_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:Product:edit" }
+
+admin_product_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:Product:update" }
+    requirements: { _method: post|put }
+
+admin_product_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:Product:delete" }

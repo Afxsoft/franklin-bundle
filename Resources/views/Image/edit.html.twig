@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:Image:common.html.twig' %}
+
+{% set title = 'Image edit'|trans %}
+
+{% block errors %}{{ form_errors(edit_form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(edit_form) }}
+
+{% endblock %}

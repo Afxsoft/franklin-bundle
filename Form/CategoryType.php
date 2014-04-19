@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ImageType extends AbstractType
+class CategoryType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,7 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
-            ->add('mimetype')
-            ->add('size')
-            ->add('height')
-            ->add('width')
-            ->add('path', 'text')
-            ->add('product')
+            ->add('name')
         ;
     }
     
@@ -31,7 +25,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Fkl\FranklinBundle\Entity\Image'
+            'data_class' => 'Fkl\FranklinBundle\Entity\Category'
         ));
     }
 
@@ -40,6 +34,6 @@ class ImageType extends AbstractType
      */
     public function getName()
     {
-        return 'fkl_franklinbundle_image';
+        return 'fkl_franklinbundle_category';
     }
 }

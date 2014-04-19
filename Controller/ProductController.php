@@ -1,0 +1,244 @@
+<?php
+
+namespace Fkl\FranklinBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Fkl\FranklinBundle\Entity\Product;
+use Fkl\FranklinBundle\Form\ProductType;
+
+/**
+ * Product controller.
+ *
+ */
+class ProductController extends Controller
+{
+
+    /**
+     * Lists all Product entities.
+     *
+     */
+    public function indexAction($page = 1)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $count = $em
+            ->getRepository('FklFranklinBundle:Product')
+            ->createQueryBuilder('id')
+            ->select('COUNT(id)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+
+        $pages = ceil($count / 20);
+        
+        $entities = $em->getRepository('FklFranklinBundle:Product')
+        ->findBy(array(), NULL, 20, (($page - 1) * 20));
+
+        return $this->render('FklFranklinBundle:Product:index.html.twig', array(
+            'entities' => $entities,
+            'pages' => $pages,
+            'page' => $page,
+        ));
+    }
+    /**
+     * Creates a new Product entity.
+     *
+     */
+    public function createAction(Request $request)
+    {
+        $entity = new Product();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                'success', 'The Product has been created.');
+
+            return $this->redirect($this->generateUrl('admin_product_show', array('id' => $entity->getId())));
+        }
+
+        return $this->render('FklFranklinBundle:Product:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+    * Creates a form to create a Product entity.
+    *
+    * @param Product $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm(Product $entity)
+    {
+        $form = $this->createForm(new ProductType(), $entity, array(
+            'action' => $this->generateUrl('admin_product_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    /**
+     * Displays a form to create a new Product entity.
+     *
+     */
+    public function newAction()
+    {
+        $entity = new Product();
+        $form   = $this->createCreateForm($entity);
+
+        return $this->render('FklFranklinBundle:Product:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a Product entity.
+     *
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FklFranklinBundle:Product')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        return $this->render('FklFranklinBundle:Product:show.html.twig', array(
+            'entity'      => $entity,
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Product entity.
+     *
+     */
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FklFranklinBundle:Product')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+
+        return $this->render('FklFranklinBundle:Product:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        ));
+    }
+
+    /**
+    * Creates a form to edit a Product entity.
+    *
+    * @param Product $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Product $entity)
+    {
+        $form = $this->createForm(new ProductType(), $entity, array(
+            'action' => $this->generateUrl('admin_product_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
+
+        return $form;
+    }
+    /**
+     * Edits an existing Product entity.
+     *
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('FklFranklinBundle:Product')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                'success', 'The Product has been updated.');
+            
+            return $this->redirect($this->generateUrl('admin_product_show', array('id' => $id)));
+        }
+
+        return $this->render('FklFranklinBundle:Product:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+        ));
+    }
+    /**
+     * Deletes a Product entity.
+     *
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm->handleRequest($request);
+        
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('FklFranklinBundle:Product')->find($id);
+
+        if ($deleteForm->isValid()) {
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Product entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+            
+            $this->get('session')->getFlashBag()->add(
+                'success', 'The Product has been deleted.');
+            
+            return $this->redirect($this->generateUrl('admin_product'));
+        }
+
+        return $this->render('FklFranklinBundle:Product:delete.html.twig', array(
+                'entity'      => $entity,
+                'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Creates a form to delete a Product entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_product_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
+        ;
+    }
+}

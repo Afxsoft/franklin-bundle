@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:Product:common.html.twig' %}
+
+{% set title = 'Product edit'|trans %}
+
+{% block errors %}{{ form_errors(edit_form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(edit_form) }}
+
+{% endblock %}

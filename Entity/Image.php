@@ -3,106 +3,74 @@
 namespace Fkl\FranklinBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 
 /**
  * Image
+ *
+ * @ORM\Table(name="image")
+ * @ORM\Entity(repositoryClass="Fkl\FranklinBundle\Entity\ImageRepository")
  */
 class Image
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = 'images/produits';
 
-/**
- * Unmapped property to handle file uploads
- */
-private $file;
-
-/**
- * Sets file.
- *
- * @param UploadedFile $file
- */
-public function setFile(UploadedFile $file = null)
-{
-    $this->file = $file;
-}
-
-    public function __toString()
-{
-        return (string) $this->filename;
-}
-
-/**
- * Get file.
- *
- * @return UploadedFile
- */
-public function getFile()
-{
-    return $this->file;
-}
-
-/**
- * Manages the copying of the file to the relevant place on the server
- */
-public function upload()
-{
-    // the file property can be empty if the field is not required
-    if (null === $this->getFile()) {
-        return;
-    }
-    $time=time();
-
-    // we use the original file name here but you should
-    // sanitize it at least to avoid any security issues
-
-    // move takes the target directory and target filename as params
-    $this->getFile()->move(
-        Image::SERVER_PATH_TO_IMAGE_FOLDER,
-        $time.'_'.$this->getFile()->getClientOriginalName()
-    );
-
-    // set the path property to the filename where you've saved the file
-    $this->filename = $time.'_'.$this->getFile()->getClientOriginalName();
-
-    // clean up the file property as you won't need it anymore
-    $this->setFile(null);
-}
-
-/**
- * Lifecycle callback to upload the file to the server
- */
-public function lifecycleFileUpload() {
-    $this->upload();
-}
-
-/**
- * Updates the hash value to force the preUpdate and postUpdate events to fire
- */
-public function refreshUpdated() {
-    $this->setUpdated(date('Y-m-d H:i:s'));
-}
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="text")
      */
-    private $filename;
+    protected $name;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="mimetype", type="string", length=255)
      */
-    private $updated;
+    protected $mimetype;
 
     /**
-     * @var \Fkl\FranklinBundle\Entity\Produit
+     * @var integer
+     *
+     * @ORM\Column(name="size", type="bigint")
      */
-    private $produit;
+    protected $size;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="height", type="integer")
+     */
+    protected $height;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="width", type="integer")
+     */
+    protected $width;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="text")
+     */
+    protected $path;
+
+    /**
+     * @var \Fkl\FranklinBundle\Entity\Product
+     * 
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="product", referencedColumnName="id", nullable=true)
+     */
+    protected $product;
 
     /**
      * Get id
@@ -115,73 +83,164 @@ public function refreshUpdated() {
     }
 
     /**
-     * Set filename
+     * Set name
      *
-     * @param string $filename
+     * @param string $name
      * @return Image
      */
-    public function setFilename($filename)
+    public function setName($name)
     {
-        $this->filename = $filename;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get filename
+     * Get name
      *
      * @return string 
      */
-    public function getFilename()
+    public function getName()
     {
-        return $this->filename;
+        return $this->name;
     }
 
     /**
-     * Set updated
+     * Set mimetype
      *
-     * @param string $updated
+     * @param string $mimetype
      * @return Image
      */
-    public function setUpdated($updated)
+    public function setMimetype($mimetype)
     {
-        $this->updated = $updated;
+        $this->mimetype = $mimetype;
 
         return $this;
     }
 
     /**
-     * Get updated
+     * Get mimetype
      *
      * @return string 
      */
-    public function getUpdated()
+    public function getMimetype()
     {
-        return $this->updated;
+        return $this->mimetype;
     }
 
     /**
-     * Set produit
+     * Set size
      *
-     * @param \Fkl\FranklinBundle\Entity\Produit $produit
+     * @param integer $size
      * @return Image
      */
-    public function setProduit(\Fkl\FranklinBundle\Entity\Produit $produit = null)
+    public function setSize($size)
     {
-        $this->produit = $produit;
+        $this->size = $size;
 
         return $this;
     }
 
     /**
-     * Get produit
+     * Get size
      *
-     * @return \Fkl\FranklinBundle\Entity\Produit 
+     * @return integer 
      */
-    public function getProduit()
+    public function getSize()
     {
-        return $this->produit;
+        return $this->size;
     }
 
- 
+    /**
+     * Set height
+     *
+     * @param integer $height
+     * @return Image
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return integer 
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * Set width
+     *
+     * @param integer $width
+     * @return Image
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return integer 
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Image
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Fkl\FranklinBundle\Entity\Product $product
+     * @return Image
+     */
+    public function setProduct(\Fkl\FranklinBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Fkl\FranklinBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
 }

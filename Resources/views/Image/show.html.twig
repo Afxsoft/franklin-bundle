@@ -1,0 +1,37 @@
+{% extends 'FklFranklinBundle:Image:common.html.twig' %}
+
+{% set title = 'Image'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Id:</label>
+            {{ entity.id }}
+    </li>
+    <li class="list-group-item">
+        <label>Name:</label>
+            {{ entity.name }}
+    </li>
+    <li class="list-group-item">
+        <label>Mimetype:</label>
+            {{ entity.mimetype }}
+    </li>
+    <li class="list-group-item">
+        <label>Size:</label>
+            {{ entity.size }}
+    </li>
+    <li class="list-group-item">
+        <label>Height:</label>
+            {{ entity.height }}
+    </li>
+    <li class="list-group-item">
+        <label>Width:</label>
+            {{ entity.width }}
+    </li>
+    <li class="list-group-item">
+        <label>Path:</label>
+            {{ entity.path }}
+    </li>
+</ul>
+
+{% endblock %}
