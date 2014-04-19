@@ -1,0 +1,7 @@
+.modal-footer .form-group {
+    display: inline-block;
+}
+
+.product-images-list img {
+    max-width: 100%;
+}

@@ -60,7 +60,7 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="text")
+     * @ORM\Column(name="path", type="text", nullable=true)
      */
     protected $path;
 

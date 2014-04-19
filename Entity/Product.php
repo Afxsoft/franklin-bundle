@@ -81,7 +81,7 @@ class Product
     protected $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
      */
     protected $images;
 

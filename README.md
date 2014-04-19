@@ -4,7 +4,7 @@
 Create the *src/Fkl* directory and clone the Franklin bundle with the following instructions into the *src/Fkl/FranklinBundle/* folder:
 
 ``` bash
-mkdir src/Fkl && mkdir src/Fkl
+mkdir src/Fkl && cd src/Fkl
 git clone git@github.com:Afxsoft/franklin-bundle.git FranklinBundle
 ```
 

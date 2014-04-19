@@ -16,12 +16,10 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('name', 'text')
-            ->add('mimetype')
-            ->add('size')
-            ->add('height')
-            ->add('width')
-            ->add('path', 'text')
-            ->add('product')
+            ->add('file', 'file', array(
+                'label' => 'File Image',
+                'mapped' => FALSE,
+            ))
         ;
     }
     

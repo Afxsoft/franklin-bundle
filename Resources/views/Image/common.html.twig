@@ -7,10 +7,6 @@
         <span class="glyphicon glyphicon-list"></span>
         {% trans %}List{% endtrans %}
     </a>
-    <a href="{{ path('admin_image_new') }}" class="btn btn-primary{%if 'admin_image_new' == app.request.attributes.get('_route')%} active{% endif %}">
-        <span class="glyphicon glyphicon-plus"></span>
-        {% trans %}New Image{% endtrans %}
-    </a>
 </div>
 
 {% if entity is defined and entity.id %}
