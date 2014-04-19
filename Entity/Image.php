@@ -71,6 +71,11 @@ class Image
      * @ORM\JoinColumn(name="product", referencedColumnName="id", nullable=true)
      */
     protected $product;
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
