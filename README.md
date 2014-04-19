@@ -36,7 +36,7 @@ public function registerBundles()
 }
 ```
 
-Edit the 'app/config/config.yml':
+Edit the *app/config/config.yml*:
 ``` yml
 imports:
     - { resource: parameters.yml }
@@ -119,7 +119,7 @@ fos_user:
     user_class: Fkl\FranklinBundle\Entity\User
 ```
 
-Edit the *security.yml*:
+Edit the *app/config/security.yml*:
 ``` yml
 security:
     encoders:
@@ -147,4 +147,12 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+```
+
+Edit the *app/config/routing.yml*
+
+``` yml
+fkl_franklin:
+    resource: "@FklFranklinBundle/Resources/config/routing.yml"
+    prefix:   /
 ```
