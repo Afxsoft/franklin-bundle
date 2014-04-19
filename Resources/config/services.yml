@@ -2,6 +2,8 @@ parameters:
 #    fkl_franklin.example.class: Fkl\FranklinBundle\Example
 
 services:
-            
-
-        
+    product.listerner:
+        class: Fkl\FranklinBundle\Listener\ProductListener
+        tags:
+        - { name: doctrine.event_listener, event: prePersist }
+        - { name: doctrine.event_listener, event: preUpdate }
