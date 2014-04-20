@@ -1,5 +1,4 @@
-<!DO
-    CTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
@@ -19,38 +18,54 @@
         <section id="wrapper">
             <header id="header">
                 <div class="top">
-                    <nav class="navbar navbar-default" role="navigation">
+
+
+
+                    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
                         <div class="container">
-                            <a href="{{ path('homepage') }}" class="navbar-brand logo-top">Franklin Domotique</a>
-                            <ul class="nav navbar-nav ">
-                                <li><a href="{{ path('installationpage') }}" class="{% if app.request.attributes.get('_route') == 'installationpage' %}active{% endif %}">Nos installations</a></li>
-                                <li><a href="{{ path('produitpage') }}" class="{% if app.request.attributes.get('_route') == 'produitpage' %}active{% endif %}">Nos produits</a></li>
-                                <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Nous contacter</a></li>
-                                <li><a href="{{ path('fos_user_security_login') }}" class="login" ><span class="login-link"></span>Mon compte</a></li>
-                            </ul>                           
+
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="{{ path('homepage') }}" class="navbar-brand logo-top">Franklin Domotique</a>
+                            </div>
+                            <nav class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
+                                    <li><a href="{{ path('installationpage') }}" class="">Nos installations</a></li>
+                                    <li><a href="{{ path('produitpage') }}" class="">Nos produits</a></li>
+                                    <li><a href="{{ path('contactpage') }}" class="">Nous contacter</a></li>
+                                    <li><a href="{{ path('fos_user_security_login') }}" class="login" ><span class="login-link"></span>Mon compte</a></li>
+                                    <li><a href="#" class="glyphicon glyphicon-search search"></a></li>
+                                </ul>    
+                            </nav>
                         </div>
-                    </nav>
+                    </div>                   
+
+
                 </div>
             </header>
 
             <section id="message">
                 {% block message %}{% endblock %}
             </section>
-            <section id="content">
+            {% block slideshow %}{% endblock %}
+            <section id="content" class="container">   
                 {% block body %}{% endblock %}
             </section>
 
-            <footer id="footer" class="container">           
-                    <nav class="menu_bottom">
-                        <ul class="nav">
-                            <li><a href="{{ path('homepage') }}" class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %}">Acceuil</a></li>
-                            <li><a href="{{ path('installationpage') }}" class="{% if app.request.attributes.get('_route') == 'installationpage' %}active{% endif %}">Nos installations</a></li>
-                            <li><a href="{{ path('produitpage') }}" class="{% if app.request.attributes.get('_route') == 'produitpage' %}active{% endif %}">Nos produits</a></li>
-                            <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Nous contacter</a></li>
-                            <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Qui somme nous</a></li>
+            <footer id="footer">           
+                <div class="container">
+                    <nav class="navbar navbar-inverse" role="navigation">
+                        <ul class="nav navbar-nav ">
+                            <li><a href="/" class="">Plan du site</a></li>
+                            <li><a href="/" class="">Info legal</a></li>                           
                         </ul>
                     </nav>
-                <div class="logo-footer"></div>
+                </div>
             </footer>
         </section>
 
