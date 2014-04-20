@@ -41,8 +41,18 @@
         {% if entity.images %}
             <div class="row product-images-list">
                 {% for image in images %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <a href="{{ path('admin_image_show', {'id': image.id }) }}"><img src="{{ asset(image.path) }}" /></a>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 image-item">
+                        <div class="content">
+                            <a href="{{ path('admin_image_show', {'id': image.id }) }}"><img src="{{ asset(image.path) }}" /></a>
+                            </div>
+                            <div class="image-links">
+                                <a href="{{ path('admin_image_edit', {'id': image.id }) }}" title="{% trans %}Edit{% endtrans %}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </a>
+                                <a href="{{ path('admin_image_delete', {'id': image.id }) }}" title="{% trans %}Delete{% endtrans %}">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
