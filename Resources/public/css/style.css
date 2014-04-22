@@ -177,12 +177,14 @@ i.installation{
 }
 
 .carousel .item {
-   height: 500px;
+    height: 500px;
     background-color: #777;
 }
 .carousel.contact .item {
-   height: 780px;
+    height: 780px;
     background-color: #777;
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
 }
 
 
