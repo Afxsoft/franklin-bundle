@@ -165,7 +165,11 @@ i.installation{
     z-index: 0;
 }
 .carousel {
-    height: 500px;
+    height: 500x;
+    margin-bottom: 60px;
+}
+.carousel.contact {
+    height: 780px;
     margin-bottom: 60px;
 }
 .carousel-caption {
@@ -173,7 +177,11 @@ i.installation{
 }
 
 .carousel .item {
-    height: 500px;
+   height: 500px;
+    background-color: #777;
+}
+.carousel.contact .item {
+   height: 780px;
     background-color: #777;
 }
 
