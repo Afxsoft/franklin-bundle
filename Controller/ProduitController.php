@@ -10,4 +10,8 @@ class ProduitController extends Controller
     {
         return $this->render('FklFranklinBundle:Produit:index.html.twig');
     }
+    public function fullAction()
+    {
+        return $this->render('FklFranklinBundle:Produit:full.html.twig');
+    }
 }
