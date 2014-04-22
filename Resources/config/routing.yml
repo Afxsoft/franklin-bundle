@@ -7,6 +7,9 @@ installationpage:
 produitpage:
     pattern:  /produits
     defaults: { _controller: FklFranklinBundle:Produit:index }
+produitpagefull:
+    pattern:  /produits/full
+    defaults: { _controller: FklFranklinBundle:Produit:full }
 contactpage:
     pattern:  /contact
     defaults: { _controller: FklFranklinBundle:Contact:index }
