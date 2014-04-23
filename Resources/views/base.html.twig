@@ -18,9 +18,6 @@
         <section id="wrapper">
             <header id="header">
                 <div class="top">
-
-
-
                     <div class="navbar navbar-inverse navbar-static-top" role="navigation">
                         <div class="container">
 
@@ -35,17 +32,15 @@
                             </div>
                             <nav class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
-                                    <li><a href="{{ path('installationpage') }}" class="">Nos installations</a></li>
-                                    <li><a href="{{ path('produitpage') }}" class="">Nos produits</a></li>
-                                    <li><a href="{{ path('contactpage') }}" class="">Nous contacter</a></li>
+                                    <li><a href="{{ path('installationpage') }}" class="{% if app.request.attributes.get('_route') == 'installationpage' %}active{% endif %}">Nos installations</a></li>
+                                    <li><a href="{{ path('produitpage') }}" class="{% if app.request.attributes.get('_route') == 'produitpage' %}active{% endif %}">Nos produits</a></li>
+                                    <li><a href="{{ path('contactpage') }}" class="{% if app.request.attributes.get('_route') == 'contactpage' %}active{% endif %}">Nous contacter</a></li>
                                     <li><a href="{{ path('fos_user_security_login') }}" class="login" ><span class="login-link"></span>Mon compte</a></li>
                                     <li><a href="#" class="glyphicon glyphicon-search search"></a></li>
                                 </ul>    
                             </nav>
                         </div>
-                    </div>                   
-
-
+                    </div>   
                 </div>
             </header>
 
