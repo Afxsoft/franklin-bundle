@@ -131,7 +131,12 @@ i.installation{
     padding: 0;
     line-height: 35px;
 }
-.navbar-inverse .navbar-nav>li>a:hover {
+.top .navbar-inverse .navbar-nav>li>a:hover {
+    color: #e96656;;
+    padding: 0;
+    line-height: 35px;
+}
+.navbar-inverse .navbar-nav>li>a.active {
     color: #e96656;
     outline: none;
 }
@@ -367,7 +372,7 @@ i.installation{
     border-radius: 14px;
     position: absolute;
     z-index: 999;
-    top: 28%;
+    top: 14%;
 }
 .contact-form .input-box,textarea {
     width: 100%;
@@ -380,6 +385,9 @@ i.installation{
 .contact-form h1 {
     color: #fff;
     margin-bottom: 48px;
+}
+.contact .jumbotron{
+    opacity: 0.9;
 }
 .filtre-produit{
     text-align: left;
