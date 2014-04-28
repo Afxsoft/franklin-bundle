@@ -3,6 +3,7 @@
 namespace Fkl\FranklinBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Intervention
@@ -38,7 +39,7 @@ class Intervention
     /**
      * @var string
      * 
-     * @ORM\Column(name="price", type="string", length=255)
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
@@ -67,9 +68,9 @@ class Intervention
      * @var \Fkl\FranklinBundle\Entity\User
      * 
      * @ORM\ManyToMany(targetEntity="User")
-     * @ORM\JoinColumn(name="user", referencedColumnName="id", nullable=false)
+     * @ORM\JoinTable(name="interventionsUsers")
      */
-    private $user;
+    private $users;
 
     /**
      * @var \Fkl\FranklinBundle\Entity\InterventionCategory
@@ -77,7 +78,12 @@ class Intervention
      * @ORM\ManyToOne(targetEntity="InterventionCategory")
      * @ORM\JoinColumn(name="interventioncategory", referencedColumnName="id", nullable=false)
      */
-    private $interventionCategory;
+    private $category;
+    
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
     /**
@@ -139,7 +145,7 @@ class Intervention
     /**
      * Set price
      *
-     * @param string $price
+     * @param float $price
      * @return Intervention
      */
     public function setPrice($price)
@@ -152,7 +158,7 @@ class Intervention
     /**
      * Get price
      *
-     * @return string 
+     * @return float 
      */
     public function getPrice()
     {
@@ -229,48 +235,58 @@ class Intervention
     }
 
     /**
-     * Set user
+     * Add users
      *
-     * @param integer $user
+     * @param \Fkl\FranklinBundle\Entity\User $users
      * @return Intervention
      */
-    public function setUser($user)
+    public function addUser(\Fkl\FranklinBundle\Entity\User $users)
     {
-        $this->user = $user;
+        $this->users[] = $users;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Remove users
      *
-     * @return integer 
+     * @param \Fkl\FranklinBundle\Entity\User $users
      */
-    public function getUser()
+    public function removeUser(\Fkl\FranklinBundle\Entity\User $users)
     {
-        return $this->user;
+        $this->users->removeElement($users);
     }
 
     /**
-     * Set interventionCategory
+     * Get users
      *
-     * @param integer $interventionCategory
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Fkl\FranklinBundle\Entity\InterventionCategory $category
      * @return Intervention
      */
-    public function setInterventionCategory($interventionCategory)
+    public function setCategory(\Fkl\FranklinBundle\Entity\InterventionCategory $category)
     {
-        $this->interventionCategory = $interventionCategory;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get interventionCategory
+     * Get category
      *
-     * @return integer 
+     * @return \Fkl\FranklinBundle\Entity\InterventionCategory 
      */
-    public function getInterventionCategory()
+    public function getCategory()
     {
-        return $this->interventionCategory;
+        return $this->category;
     }
 }
