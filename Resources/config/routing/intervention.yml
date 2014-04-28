@@ -7,32 +7,32 @@ admin_intervention_root:
         
 admin_intervention:
     pattern:  /list/{page}
-    defaults: { _controller: "FklFranklinBundle:intervention:index", page: 1 }
+    defaults: { _controller: "FklFranklinBundle:Intervention:index", page: 1 }
     requirements:
         page: .+
 
 admin_intervention_show:
     pattern:  /{id}/show
-    defaults: { _controller: "FklFranklinBundle:intervention:show" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:show" }
 
 admin_intervention_new:
     pattern:  /new
-    defaults: { _controller: "FklFranklinBundle:intervention:new" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:new" }
 
 admin_intervention_create:
     pattern:  /create
-    defaults: { _controller: "FklFranklinBundle:intervention:create" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:create" }
     requirements: { _method: post }
 
 admin_intervention_edit:
     pattern:  /{id}/edit
-    defaults: { _controller: "FklFranklinBundle:intervention:edit" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:edit" }
 
 admin_intervention_update:
     pattern:  /{id}/update
-    defaults: { _controller: "FklFranklinBundle:intervention:update" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:update" }
     requirements: { _method: post|put }
 
 admin_intervention_delete:
     pattern:  /{id}/delete
-    defaults: { _controller: "FklFranklinBundle:intervention:delete" }
+    defaults: { _controller: "FklFranklinBundle:Intervention:delete" }

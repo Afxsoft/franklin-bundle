@@ -16,15 +16,15 @@
         <tbody>
             {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('interventioncategory_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td><a href="{{ path('interventioncategory_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td><a href="{{ path('admin_intervention_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('admin_intervention_category_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>
-                    <a href="{{ path('interventioncategory_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
+                    <a href="{{ path('admin_intervention_category_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('interventioncategory_delete', {'id': entity.id}) }}" title="{% trans %}Delete{% endtrans %}">
+                    <a href="{{ path('admin_intervention_category_delete', {'id': entity.id}) }}" title="{% trans %}Delete{% endtrans %}">
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                 </td>
@@ -38,7 +38,7 @@
         {% include 'DevelopatheCrudBundle::pagination.html.twig' with {
             currentFilters: { },
             currentPage: page,
-            paginationPath: "interventioncategory",
+            paginationPath: "admin_intervention_category",
             lastPage: pages,
             showAlwaysFirstAndLast: true
         } only %}

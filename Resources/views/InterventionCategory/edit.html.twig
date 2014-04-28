@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:InterventionCategory:common.html.twig' %}
+
+{% set title = 'InterventionCategory edit'|trans %}
+
+{% block errors %}{{ form_errors(edit_form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(edit_form) }}
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'FklFranklinBundle:InterventionCategory:common.html.twig' %}
+
+{% set title = 'Delete InterventionCategory\'s entry'|trans %}
+
+{% block errors %}{{ form_errors(delete_form) }}{% endblock errors %}
+
+{% block body %}
+<p class="alert alert-danger">{% trans with {'%entity%': 'InterventionCategory'} %}Please confirm you want to delete this %entity%'s entry.{% endtrans %}</p>
+{{ form(delete_form) }}
+{% endblock %}

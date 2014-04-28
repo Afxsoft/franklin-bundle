@@ -1,0 +1,38 @@
+admin_intervention_category_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_intervention_category
+        permanent: true
+        
+admin_intervention_category:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_intervention_category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:show" }
+
+admin_intervention_category_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:new" }
+
+admin_intervention_category_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:create" }
+    requirements: { _method: post }
+
+admin_intervention_category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:edit" }
+
+admin_intervention_category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:update" }
+    requirements: { _method: post|put }
+
+admin_intervention_category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:InterventionCategory:delete" }

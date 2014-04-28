@@ -14,8 +14,6 @@
                 <th>{% trans %}Address{% endtrans %}</th>
                 <th>{% trans %}Zip{% endtrans %}</th>
                 <th>{% trans %}City{% endtrans %}</th>
-                <th>{% trans %}User{% endtrans %}</th>
-                <th>{% trans %}Interventioncategory{% endtrans %}</th>
                 <th><span class="glyphicon glyphicon-edit" title="{% trans %}Edit{% endtrans %}"></span></th>
                 <th><span class="glyphicon glyphicon-remove" title="{% trans %}Delete{% endtrans %}"></span></th>
             </tr>
@@ -23,22 +21,20 @@
         <tbody>
             {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.price }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.address }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.zip }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.city }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.user }}</a></td>
-                <td><a href="{{ path('intervention_show', { 'id': entity.id }) }}">{{ entity.interventionCategory }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.price }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.address }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.zip }}</a></td>
+                <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.city }}</a></td>
                 <td>
-                    <a href="{{ path('intervention_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
+                    <a href="{{ path('admin_intervention_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="{{ path('intervention_delete', {'id': entity.id}) }}" title="{% trans %}Delete{% endtrans %}">
+                    <a href="{{ path('admin_intervention_delete', {'id': entity.id}) }}" title="{% trans %}Delete{% endtrans %}">
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                 </td>
@@ -52,7 +48,7 @@
         {% include 'DevelopatheCrudBundle::pagination.html.twig' with {
             currentFilters: { },
             currentPage: page,
-            paginationPath: "intervention",
+            paginationPath: "admin_intervention",
             lastPage: pages,
             showAlwaysFirstAndLast: true
         } only %}

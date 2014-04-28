@@ -84,6 +84,11 @@ class Intervention
     {
         $this->users = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->title;
+    }
 
 
     /**

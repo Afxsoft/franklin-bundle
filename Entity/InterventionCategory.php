@@ -35,9 +35,16 @@ class InterventionCategory
      */
     protected $interventions;
     
-    function __construct($id, $name, $interventions)
+    function __construct()
     {
         $this->interventions = new ArrayCollection();
+    }
+    
+    
+    
+    public function __toString()
+    {
+        return $this->name;
     }
 
     
