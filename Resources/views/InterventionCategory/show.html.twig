@@ -1,0 +1,17 @@
+{% extends 'FklFranklinBundle:InterventionCategory:common.html.twig' %}
+
+{% set title = 'InterventionCategory'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Id:</label>
+            {{ entity.id }}
+    </li>
+    <li class="list-group-item">
+        <label>Name:</label>
+            {{ entity.name }}
+    </li>
+</ul>
+
+{% endblock %}

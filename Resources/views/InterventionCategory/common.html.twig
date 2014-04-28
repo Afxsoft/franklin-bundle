@@ -1,0 +1,33 @@
+{% extends 'DevelopatheCrudBundle::base.html.twig' %}
+
+{% block contextualMenu %}
+
+<div class="btn-group">
+    <a href="{{ path('interventioncategory') }}" class="btn btn-default{%if 'interventioncategory' == app.request.attributes.get('_route')%} active{% endif %}">
+        <span class="glyphicon glyphicon-list"></span>
+        {% trans %}List{% endtrans %}
+    </a>
+    <a href="{{ path('interventioncategory_new') }}" class="btn btn-primary{%if 'interventioncategory_new' == app.request.attributes.get('_route')%} active{% endif %}">
+        <span class="glyphicon glyphicon-plus"></span>
+        {% trans %}New InterventionCategory{% endtrans %}
+    </a>
+</div>
+
+{% if entity is defined and entity.id %}
+<div class="btn-group">
+    <a class="btn btn-default {%if 'interventioncategory_show' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('interventioncategory_show', {'id': entity.id}) }}">
+        {% trans %}Show{% endtrans %}
+    </a>
+    <a class="btn btn-default {%if 'interventioncategory_edit' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('interventioncategory_edit', {'id': entity.id}) }}">
+        <span class="glyphicon glyphicon-edit"></span>
+        {% trans %}Edit{% endtrans %}
+    </a>
+    <a class="btn btn-default {%if 'interventioncategory_delete' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('interventioncategory_delete', {'id': entity.id}) }}">
+        <span class="glyphicon glyphicon-remove"></span>
+        {% trans %}Delete{% endtrans %}
+    </a>    
+</div>
+{% endif %}
+
+
+{% endblock contextualMenu %}
