@@ -1,0 +1,9 @@
+api_product:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:ProductApi:index", page: 1 }
+    requirements:
+        page: .+
+
+api_product_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:ProductApi:show" }

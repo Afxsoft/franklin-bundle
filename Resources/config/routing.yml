@@ -45,6 +45,10 @@ FklFranklinBundle_admin_image:
 FklFranklinBundle_admin_product:
         resource: "@FklFranklinBundle/Resources/config/routing/product.yml"
         prefix:   /admin/product
+        
+FklFranklinBundle_api_product:
+        resource: "@FklFranklinBundle/Resources/config/routing/product_api.yml"
+        prefix:   /api/product
 
 FklFranklinBundle_admin_intervention_category:
         resource: "@FklFranklinBundle/Resources/config/routing/interventioncategory.yml"
