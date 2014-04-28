@@ -1,0 +1,38 @@
+admin_intervention_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_intervention
+        permanent: true
+        
+admin_intervention:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:intervention:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_intervention_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:intervention:show" }
+
+admin_intervention_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:intervention:new" }
+
+admin_intervention_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:intervention:create" }
+    requirements: { _method: post }
+
+admin_intervention_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:intervention:edit" }
+
+admin_intervention_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:intervention:update" }
+    requirements: { _method: post|put }
+
+admin_intervention_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:intervention:delete" }
