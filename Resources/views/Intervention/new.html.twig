@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:Intervention:common.html.twig' %}
+
+{% set title = 'New Intervention'|trans %}
+
+{% block errors %}{{ form_errors(form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+{% endblock %}
