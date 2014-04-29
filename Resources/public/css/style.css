@@ -173,6 +173,9 @@ i.installation{
     height: 500px;
     margin-bottom: 60px;
 }
+.carousel.profile  {
+    height: 148px;
+}
 .carousel.contact {
     height: 780px;
     margin-bottom: 0px;
@@ -184,6 +187,10 @@ i.installation{
 .carousel .item {
     height: 500px;
     background-color: #777;
+}
+.carousel.profile .item {
+    height: 148px;
+    background-color: #D1D1D1;
 }
 .carousel.contact .item {
     height: 780px;
@@ -400,169 +407,169 @@ i.installation{
 -----------------------------------------*/
 
 .works {
-	padding-bottom: 100px;
-	background: #FFFFFF;
-	min-height: 800px;
+    padding-bottom: 100px;
+    background: #FFFFFF;
+    min-height: 800px;
 }
 
 /* IMAGE GRID */
 .cbp-rfgrid {
-	margin: auto;
-	padding: 0;
-	list-style: none;
-	position: relative;
-	width: 100%;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    width: 100%;
 }
 .cbp-rfgrid li {
-	position: relative;
-	float: left;
-	overflow: hidden;
-	width: 25%; /* Fallback */
-width: -webkit-calc(100% / 4);
-	width: calc(100% / 4);
-	-webkit-transition: 0.4s all linear;
-	        transition: 0.4s all linear;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 25%; /* Fallback */
+    width: -webkit-calc(100% / 4);
+    width: calc(100% / 4);
+    -webkit-transition: 0.4s all linear;
+    transition: 0.4s all linear;
 }
 .cbp-rfgrid li a,.cbp-rfgrid li a img {
-	display: block;
-	max-width: 100%;
-	-webkit-transform: scale(1,1);
-	-ms-transform: scale(1,1);
-	        transform: scale(1,1);
-	-webkit-transition-timing-function: ease-in;
-	        transition-timing-function: ease-in;
-	-webkit-transition-duration: 250ms;
-	        transition-duration: 250ms;
-	cursor: pointer;
-	-webkit-transition: 0.4s all linear;
-	        transition: 0.4s all linear;
+    display: block;
+    max-width: 100%;
+    -webkit-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
+    cursor: pointer;
+    -webkit-transition: 0.4s all linear;
+    transition: 0.4s all linear;
 }
 .cbp-rfgrid li a:hover img {
-	-webkit-transform: scale(1.05,1.07);
-	-ms-transform: scale(1.05,1.07);
-	        transform: scale(1.05,1.07);
-	-webkit-transition-timing-function: ease-out;
-	        transition-timing-function: ease-out;
-	-webkit-transition-duration: 250ms;
-	        transition-duration: 250ms;
+    -webkit-transform: scale(1.05,1.07);
+    -ms-transform: scale(1.05,1.07);
+    transform: scale(1.05,1.07);
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    transition-duration: 250ms;
 }
 
 /* Flexbox is used for centering the heading */
 .cbp-rfgrid li a .project-info {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	right: 10px;
-	bottom: 10px;
-	background: rgba(0,0,0,0.5);
-	padding-top: 25%;
-	text-align: center;
-	filter: alpha(opacity=0);
-	opacity: 0;
-	-webkit-transition: all ease .25s;
-	        transition: all ease .25s;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0,0,0,0.5);
+    padding-top: 25%;
+    text-align: center;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: all ease .25s;
+    transition: all ease .25s;
 }
 .cbp-rfgrid li a .project-info .project-details {
-	position: relative;
-	top: -29px;
-	filter: alpha(opacity=0);
-	opacity: 0;
-	-webkit-transition: all ease .25s;
-	        transition: all ease .25s;
-	width: 100%;
+    position: relative;
+    top: -29px;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: all ease .25s;
+    transition: all ease .25s;
+    width: 100%;
 }
 .cbp-rfgrid li a .project-info h5 {
-	position: relative;
-	display: inline-block;
-	margin-bottom: 15px;
-	font-weight: bold;
-	text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .cbp-rfgrid li a:hover .project-info {
-	filter: alpha(opacity=100);
-	opacity: 1;
+    filter: alpha(opacity=100);
+    opacity: 1;
 }
 .cbp-rfgrid li a:hover .project-details {
-	filter: alpha(opacity=100);
-	opacity: 1;
-	top: 0;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    top: 0;
 }
 .cbp-rfgrid li a:hover .button {
-	filter: alpha(opacity=100);
-	opacity: 1;
-	bottom: -50px;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    bottom: -50px;
 }
 
 /* media queries:  change number of items per row */
 @media screen and (max-width: 1190px) {
-	.cbp-rfgrid li {
-	width: 25%; /* Fallback */
-width: -webkit-calc(100% / 4);
-	width: calc(100% / 4);
-}
+    .cbp-rfgrid li {
+        width: 25%; /* Fallback */
+        width: -webkit-calc(100% / 4);
+        width: calc(100% / 4);
+    }
 }
 @media screen and (max-width: 1024px) {
-	.cbp-rfgrid li {
-	width: 33.33333333333333%; /* Fallback */
-width: -webkit-calc(100% / 3);
-	width: calc(100% / 3);
-}
+    .cbp-rfgrid li {
+        width: 33.33333333333333%; /* Fallback */
+        width: -webkit-calc(100% / 3);
+        width: calc(100% / 3);
+    }
 }
 @media screen and (max-width: 768px) {
-	.cbp-rfgrid li {
-	width: 50%; /* Fallback */
-width: -webkit-calc(100% / 2);
-	width: calc(100% / 2);
-}
+    .cbp-rfgrid li {
+        width: 50%; /* Fallback */
+        width: -webkit-calc(100% / 2);
+        width: calc(100% / 2);
+    }
 }
 @media screen and (max-width: 480px) {
-	.cbp-rfgrid li {
-	width: 100%;
-}
+    .cbp-rfgrid li {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 300px) {
-	.cbp-rfgrid li {
-	width: 100%;
-}
+    .cbp-rfgrid li {
+        width: 100%;
+    }
 }
 
 /* PROJECT DETAILS LOADER */
 #back-button {
-	display: none;
-	text-align: center;
-	text-transform: uppercase;
-	padding: 13px 35px 13px 35px;
-	border-radius: 4px;
-	margin: 10px;
+    display: none;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 13px 35px 13px 35px;
+    border-radius: 4px;
+    margin: 10px;
 }
 #back-button i {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 #loader {
-	min-height: 930px;
-	position: relative;
-	display: none;
+    min-height: 930px;
+    position: relative;
+    display: none;
 }
 #loader .loader-icon {
-	background: url(../images/loading.gif) no-repeat center center;
-	background-color: #FFF;
-	margin: -22px -22px;
-	top: 50%;
-	left: 50%;
-	z-index: 10000;
-	position: fixed;
-	width: 44px;
-	height: 44px;
-	-webkit-background-size: 30px 30px;
-	        background-size: 30px 30px;
-	border-radius: 5px;
+    background: url(../images/loading.gif) no-repeat center center;
+    background-color: #FFF;
+    margin: -22px -22px;
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    position: fixed;
+    width: 44px;
+    height: 44px;
+    -webkit-background-size: 30px 30px;
+    background-size: 30px 30px;
+    border-radius: 5px;
 
 }
 .installation h1{
-   margin: 52px 0;
+    margin: 52px 0;
 }
 .installation{
-   margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 #portfolio-list{
     margin-bottom: 46px;
@@ -571,36 +578,36 @@ width: -webkit-calc(100% / 2);
 Formulaire de connection
 */
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .form-signin .checkbox {
-  font-weight: normal;
+    font-weight: normal;
 }
 .form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
 }
 .form-signin .form-control:focus {
-  z-index: 2;
+    z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
