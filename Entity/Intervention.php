@@ -63,7 +63,13 @@ class Intervention
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
-
+    
+        /**
+     * @var string
+     * 
+     * @ORM\Column(name="feedback", type="text")
+     */
+    private $feedback;
     /**
      * @var \Fkl\FranklinBundle\Entity\User
      * 
@@ -293,5 +299,28 @@ class Intervention
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set feedback
+     *
+     * @param string $feedback
+     * @return Intervention
+     */
+    public function setFeedback($feedback)
+    {
+        $this->feedback = $feedback;
+
+        return $this;
+    }
+
+    /**
+     * Get feedback
+     *
+     * @return string 
+     */
+    public function getFeedback()
+    {
+        return $this->feedback;
     }
 }
