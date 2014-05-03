@@ -1,0 +1,74 @@
+{% extends 'FklFranklinBundle::base.html.twig' %}
+{% block slideshow %}
+<section class="slider">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide" alt="First slide" src="{{ asset('bundles/fklfranklin/images/slideshow/test1.jpg') }}" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="slidetitle">Entrez dans un nouvel univers connecté.</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" src="{{ asset('bundles/fklfranklin/images/slideshow/test2.jpg') }}" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="slidetitle">Entrez dans un nouvel univers connecté.</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" src="{{ asset('bundles/fklfranklin/images/slideshow/test3.jpg') }}" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 class="slidetitle">Entrez dans un nouvel univers connecté..</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block body %}
+<div class="center">
+    <h2 class="dark-text">Notre objectif</h2>
+    <h6>Conseil & Vente & Installation de produit domotique.</h6>
+    <div id="nosproduits" class="row">
+        <div class="col-lg-4 col-md-2"> 
+            <div class="service-icon" >
+                <i class="pixeden conseil"></i>
+            </div>
+            <h5>Conseil</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec arcu mi. Nulla lectus lacus, feugiat sit amet adipiscing et, dictum sit amet metus. Vivamus ac libero vel quam varius ullamcorper. Nulla facilisi. Quisque convallis mauris sit amet </p>
+
+        </div>
+        <div class="col-lg-4 col-md-2">    
+            <div class="service-icon" >
+                <i class="pixeden produit"></i>
+            </div>
+            <h5>Nos produits</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec arcu mi. Nulla lectus lacus, feugiat sit amet adipiscing et, dictum sit amet metus. Vivamus ac libero vel quam varius ullamcorper. Nulla facilisi. Quisque convallis mauris sit amet </p>
+
+        </div>
+        <div class="col-lg-4 col-md-2">  
+            <div class="service-icon" >
+                <i class="pixeden installation"></i>
+            </div>
+            <h5>Nos installations</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec arcu mi. Nulla lectus lacus, feugiat sit amet adipiscing et, dictum sit amet metus. Vivamus ac libero vel quam varius ullamcorper. Nulla facilisi. Quisque convallis mauris sit amet </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
