@@ -16,13 +16,15 @@ class InterventionType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('date')
+                ->add('date', 'datetime', array( 'date_widget' => 'single_text'))
             ->add('price')
             ->add('address')
             ->add('zip')
             ->add('city')
             ->add('users')
             ->add('category')
+            ->add('feedback')
+
         ;
     }
     
