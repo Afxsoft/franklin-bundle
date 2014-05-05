@@ -356,6 +356,7 @@ i.installation{
 }
 .produitfull .miniature{
     float:left;
+    height: 100px;
 }
 .produitfull{
     text-align: left;

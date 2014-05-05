@@ -5,15 +5,13 @@
 {% block body %}
 <div class="produit-liste">
     <h1>Nos produits</h1>
-    <form class="form-inline filtre-produit" role="form">
+    <form class="form-inline filtre-produit" role="form" action="" method="POST">
         <div class="form-group">
             <label>Categorie : </label>
-            <select class="form-control">
-                <option>Sécurité</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <select name ="categorie" class="form-control">
+    {% for categorie in categories %}
+                <option value = "{{categorie.id}}">{{categorie.name}}</option>
+    {% endfor %}
             </select>
         </div>
         <div class="form-group">
@@ -29,372 +27,43 @@
         <button type="submit" class="btn btn-default">Filtrer</button>
     </form>
     <div class="row" >
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/detecteur-bris-de-vitres-blanc.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Détecteur d'ouverture </h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
+    {% for product in products %}
+
+            <div class="col-md-3">
+                <div class="item">
+                    <img src="../{{ product.images[0].path }} " alt="" class="img-responsive">
+                    <div class="item-content">
+                        <div class="item-top-content">
+                            <div class="item-top-content-inner">
+                                <div class="item-product">
+                                    <div class="item-top-title">
+                                        <h5>    {{ product.name }} </h5>
+                                        <p class="subdescription">
+                                            {{ product.category }}                                 
+                                            </p> 
+                                        </div>
+                                    </div>
+                                    <div class="item-product-price">
+                                        <span class="price-num green-text">{{product.price}} €</span> 
+                                    </div>
                                 </div>
                             </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
+                            <div class="item-add-content">
+                                <div class="item-add-content-inner">
+                                    <div class="section">
+                                        <br>
+                                        <a href="{{ path('produitpagefull', {'id': product.id}) }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+    {% endfor %}
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/2401241.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Clavier de commande + badge</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/camera-de-surveillance-ext%C3%A9rieure-box.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Caméra de surveillance extérieure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/1811020_Telis_16_RTS_Pure.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Télécommande Telis 16 RTS Pure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" >
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/detecteur-bris-de-vitres-blanc.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Détecteur d'ouverture </h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/2401241.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Clavier de commande + badge</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/camera-de-surveillance-ext%C3%A9rieure-box.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Caméra de surveillance extérieure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/1811020_Telis_16_RTS_Pure.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Télécommande Telis 16 RTS Pure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" >
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/detecteur-bris-de-vitres-blanc.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Détecteur d'ouverture </h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/2401241.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Clavier de commande + badge</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/camera-de-surveillance-ext%C3%A9rieure-box.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Caméra de surveillance extérieure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="item">
-                <img src="http://www.somfy.fr/common/img/library/300x300/1811020_Telis_16_RTS_Pure.jpg" alt="" class="img-responsive">
-                <div class="item-content">
-                    <div class="item-top-content">
-                        <div class="item-top-content-inner">
-                            <div class="item-product">
-                                <div class="item-top-title">
-                                    <h5>Télécommande Telis 16 RTS Pure</h5>
-                                    <p class="subdescription">
-                                        Alarme
-                                    </p> 
-                                </div>
-                            </div>
-                            <div class="item-product-price">
-                                <span class="price-num green-text">15€</span> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull') }}" class="btn btn-primary custom-button green-btn">Voir la description</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 {% endblock %}
 
 {% block javascripts %}

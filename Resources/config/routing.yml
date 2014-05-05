@@ -13,6 +13,9 @@ produitpagefull:
 contactpage:
     pattern:  /contact
     defaults: { _controller: FklFranklinBundle:Contact:index }
+admin:
+    pattern:  /admin
+    defaults: { _controller: FklFranklinBundle:Admin:index }
 
 #FOSUserBundle
 fos_user_security:
