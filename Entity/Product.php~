@@ -85,7 +85,7 @@ class Product {
     protected $images;
 
         /**
-     * @ORM\ManyToMany(targetEntity="Command", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="FklFranklinBundle\Entity\Command", mappedBy="products")
      **/
     private $commands;
 
@@ -306,37 +306,4 @@ class Product {
 
 
 
-
-    /**
-     * Add commands
-     *
-     * @param \FklFranklinBundle\Entity\Command $commands
-     * @return Product
-     */
-    public function addCommand(\FklFranklinBundle\Entity\Command $commands)
-    {
-        $this->commands[] = $commands;
-
-        return $this;
-    }
-
-    /**
-     * Remove commands
-     *
-     * @param \FklFranklinBundle\Entity\Command $commands
-     */
-    public function removeCommand(\FklFranklinBundle\Entity\Command $commands)
-    {
-        $this->commands->removeElement($commands);
-    }
-
-    /**
-     * Get commands
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCommands()
-    {
-        return $this->commands;
-    }
 }

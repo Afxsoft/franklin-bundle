@@ -1,0 +1,38 @@
+admin_order_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_order
+        permanent: true
+        
+admin_order:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:Command:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_order_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:Command:show" }
+
+admin_order_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:Command:new" }
+
+admin_order_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:Command:create" }
+    requirements: { _method: post }
+
+admin_order_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:Command:edit" }
+
+admin_order_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:Command:update" }
+    requirements: { _method: post|put }
+
+admin_order_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:Command:delete" }

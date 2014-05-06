@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class InterventionType extends AbstractType
+class CommandType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,17 +15,10 @@ class InterventionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('sku')
                 ->add('date', 'datetime', array( 'date_widget' => 'single_text'))
-            ->add('price')
-            ->add('address')
-            ->add('zip')
-            ->add('city')
-            ->add('users')
-            ->add('category')
-                            ->add('status')
-
-            ->add('feedback')
+            ->add('products')
+                            ->add('infos')
 
         ;
     }
@@ -36,7 +29,7 @@ class InterventionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Fkl\FranklinBundle\Entity\Intervention'
+            'data_class' => 'Fkl\FranklinBundle\Entity\Command'
         ));
     }
 
@@ -45,6 +38,6 @@ class InterventionType extends AbstractType
      */
     public function getName()
     {
-        return 'fkl_franklinbundle_intervention';
+        return 'fkl_franklinbundle_command';
     }
 }

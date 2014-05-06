@@ -60,3 +60,7 @@ FklFranklinBundle_admin_intervention_category:
 FklFranklinBundle_admin_intervention:
         resource: "@FklFranklinBundle/Resources/config/routing/intervention.yml"
         prefix:   /admin/intervention
+        
+FklFranklinBundle_admin_order:
+        resource: "@FklFranklinBundle/Resources/config/routing/command.yml"
+        prefix:   /admin/order        

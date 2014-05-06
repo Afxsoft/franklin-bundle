@@ -1,0 +1,33 @@
+{% extends 'FklFranklinBundle:Command:common.html.twig' %}
+
+{% set title = 'Order'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Id:</label>
+            {{ entity.id }}
+    </li>
+    <li class="list-group-item">
+        <label>Sku:</label>
+            {{ entity.sku }}
+    </li>
+    <li class="list-group-item">
+        <label>Date:</label>
+            {{ entity.date|date('Y-m-d H:i:s') }}
+    </li>
+        <li class="list-group-item">
+        <label>Infos:</label>
+            {{ entity.infos }}
+    </li>
+        <li class="list-group-item">
+        <label>Produits:</label>
+            {% for product in entity.products %}
+           <p> {{ product.name }}</p>
+    {% endfor %}
+    </li>
+    
+</ul>
+<a href="" class="btn btn-default">exporter</a>
+
+{% endblock %}

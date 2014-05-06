@@ -11,6 +11,9 @@
         <span class="glyphicon glyphicon-plus"></span>
         {% trans %}New Product{% endtrans %}
     </a>
+        <a class = "btn btn-default" href="{{ path('admin_category_root') }}">
+                                {% trans %}Categories{% endtrans %}
+                            </a>
 </div>
 
 {% if entity is defined and entity.id %}

@@ -331,27 +331,4 @@ class Intervention
     {
         return $this->feedback;
     }
-
-    /**
-     * Set status
-     *
-     * @param \Fkl\FranklinBundle\Entity\InterventionStatus $status
-     * @return Intervention
-     */
-    public function setStatus(\Fkl\FranklinBundle\Entity\InterventionStatus $status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return \Fkl\FranklinBundle\Entity\InterventionStatus 
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 }

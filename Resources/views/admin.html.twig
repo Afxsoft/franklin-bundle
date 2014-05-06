@@ -38,24 +38,20 @@
 
                 <div role="navigation" class="collapse navbar-collapse">
                     <ul  class="nav navbar-nav navbar-right">
-                        <li><a href="{{ path('admin_category_root') }}">
-                                {% trans %}Product's categories{% endtrans %}
-                            </a>
-                        </li>
                         <li><a href="{{ path('admin_image_root') }}">
                                 {% trans %}Images{% endtrans %}
                             </a>
                         </li>
                         <li><a href="{{ path('admin_product_root') }}">
-                                {% trans %}Products{% endtrans %}
-                            </a>
-                        </li>
-                        <li><a href="{{ path('admin_intervention_category_root') }}">
-                                {% trans %}Interventions' categories{% endtrans %}
+                                {% trans %}Produits{% endtrans %}
                             </a>
                         </li>
                         <li><a href="{{ path('admin_intervention_root') }}">
                                 {% trans %}Interventions{% endtrans %}
+                            </a>
+                        </li>
+                                                <li><a href="{{ path('admin_order_root') }}">
+                                {% trans %}Commandes{% endtrans %}
                             </a>
                         </li>
                         <li><a href="{{ path('fos_user_security_logout') }}" title="{% trans %}Logout{% endtrans %}">
