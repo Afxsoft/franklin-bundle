@@ -23,6 +23,8 @@ class UserType extends AbstractType
             ->add('zipcode')
             ->add('city')
             ->add('phone')
+                            ->add('role')
+
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
                 'options' => array('translation_domain' => 'FOSUserBundle'),

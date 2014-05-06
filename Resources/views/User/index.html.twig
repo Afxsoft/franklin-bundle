@@ -15,6 +15,8 @@
                 <th>{% trans %}Zipcode{% endtrans %}</th>
                 <th>{% trans %}City{% endtrans %}</th>
                 <th>{% trans %}Phone{% endtrans %}</th>
+                                <th>{% trans %}Role{% endtrans %}</th>
+
                 <th><span class="glyphicon glyphicon-edit" title="{% trans %}Edit{% endtrans %}"></span></th>
                 <th><span class="glyphicon glyphicon-remove" title="{% trans %}Delete{% endtrans %}"></span></th>
             </tr>
@@ -30,6 +32,8 @@
                 <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.zipcode }}</a></td>
                 <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.city }}</a></td>
                 <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.phone }}</a></td>
+                                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}">{{ entity.role }}</a></td>
+
                 <td>
                     <a href="{{ path('admin_user_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
                         <span class="glyphicon glyphicon-edit"></span>

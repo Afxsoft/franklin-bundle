@@ -10,6 +10,8 @@
                 <th>{% trans %}Id{% endtrans %}</th>
                 <th>{% trans %}Sku{% endtrans %}</th>
                 <th>{% trans %}Date{% endtrans %}</th>
+                                <th>{% trans %}Etat{% endtrans %}</th>
+
                 <th><span class="glyphicon glyphicon-edit" title="{% trans %}Edit{% endtrans %}"></span></th>
                 <th><span class="glyphicon glyphicon-remove" title="{% trans %}Delete{% endtrans %}"></span></th>
             </tr>
@@ -20,6 +22,8 @@
                 <td><a href="{{ path('admin_order_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><a href="{{ path('admin_order_show', { 'id': entity.id }) }}">{{ entity.sku }}</a></td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td><a href="{{ path('admin_order_show', { 'id': entity.id }) }}">{{ entity.status }}</a></td>
+
                 <td>
                     <a href="{{ path('admin_order_edit', {'id': entity.id}) }}" title="{% trans %}Edit{% endtrans %}">
                         <span class="glyphicon glyphicon-edit"></span>

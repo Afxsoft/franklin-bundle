@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 05 Mai 2014 à 19:02
+-- Généré le: Mar 06 Mai 2014 à 14:32
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -41,6 +41,50 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (2, 'Domotique'),
 (3, 'Eclairage & chauffage'),
 (4, 'Rideaux et stores d''intérieur');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `command`
+--
+
+CREATE TABLE IF NOT EXISTS `command` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sku` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `infos` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_4177D3487B00651C` (`status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `command`
+--
+
+INSERT INTO `command` (`id`, `sku`, `date`, `infos`, `status`) VALUES
+(1, 'test', '2014-05-07 08:00:00', '', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandstatus`
+--
+
+CREATE TABLE IF NOT EXISTS `commandstatus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `commandstatus`
+--
+
+INSERT INTO `commandstatus` (`id`, `name`) VALUES
+(1, 'En préparation'),
+(2, 'Expédié'),
+(3, 'Livré');
 
 -- --------------------------------------------------------
 
@@ -103,9 +147,18 @@ CREATE TABLE IF NOT EXISTS `intervention` (
   `zip` int(11) NOT NULL,
   `city` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `feedback` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `interventionstatus` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_D11814AB39EA8CD9` (`interventioncategory`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  KEY `IDX_D11814AB39EA8CD9` (`interventioncategory`),
+  KEY `IDX_D11814AB845D9504` (`interventionstatus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `intervention`
+--
+
+INSERT INTO `intervention` (`id`, `interventioncategory`, `title`, `date`, `price`, `address`, `zip`, `city`, `feedback`, `interventionstatus`) VALUES
+(1, 1, 'chez arnaud', '2014-05-16 08:00:00', 200, '45 boulevard  Pasteur', 75015, 'Paris', '', 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +170,37 @@ CREATE TABLE IF NOT EXISTS `interventioncategory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `interventioncategory`
+--
+
+INSERT INTO `interventioncategory` (`id`, `name`) VALUES
+(1, 'Commercial'),
+(2, 'Installation'),
+(3, 'Maintenance'),
+(4, 'Conseil');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `interventionstatus`
+--
+
+CREATE TABLE IF NOT EXISTS `interventionstatus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `interventionstatus`
+--
+
+INSERT INTO `interventionstatus` (`id`, `name`) VALUES
+(1, 'ouvert'),
+(2, 'fermé');
 
 -- --------------------------------------------------------
 
@@ -145,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `sku` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` double NOT NULL,
   `notice` longtext COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci NOT NULL,
   `updated` datetime NOT NULL,
@@ -158,16 +241,60 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `category`, `sku`, `name`, `quantity`, `price`, `notice`, `description`, `updated`) VALUES
-(1, 2, 'HC2_1', 'Home Center 2', 20, '599', 'Présentation-HC2.pdf', 'Le contrôleur Domotique Z-wave le plus puissant du marché et une interface graphique inégalée !\r\n\r\nDoté d''un design moderne tout aluminium en faisant un objet agréable à voir comme à utiliser, il dispose aussi de caractéristiques dignes d''un petit ordinateur avec un processeur Intel cadencé à 1.6Ghz et 1Go de mémoire RAM. Il a également deux disques SSD (MLC et SLC) pour le stockage du système et le système de sauvegarde.', '2014-05-05 11:01:43'),
-(2, 2, '510700', 'Thomson Box', 15, '299', 'Présentation-HC2.pdf', 'La gamme TConnect est la solution idéale pour piloter et contrôler la maison très facilement, même pour les novices en nouvelles technologies.\r\n\r\nGrâce à la technologie TConnect, vous pouvez sécuriser votre maison, vos biens et vos proches, programmer tous vos équipements électriques, commander vos éclairages, gérer vos chauffages, piloter vos volets, votre motorisation de portail, contrôler vos consommations énergétiques...\r\n\r\nTous les produits de la gamme TConnect sont compatibles entre eux. Il est donc tout à fait possible de faire évoluer vos installations au fur et à mesure de vos besoins, et sur- tout en fonction de votre budget.\r\n\r\nEt votre quotidien devient plus facile.', '2014-05-05 11:12:18'),
-(3, 2, 'KIT_DEV_EO', 'Kit découverte EnOcean', 25, '119', 'Présentation-HC2.pdf', 'Il convient donc particulièrement aux installations électriques sans encastrement, comme par exemple les rénovations ou modifications d’installation domestique.\r\n\r\nLes capteurs et interrupteurs sont 100% autonomes et ne nécessitent aucun raccordement électrique ni pile...\r\n\r\nL''actionneur récepteur vous permettra de piloter un éclairage, votre chauffage ou toute source électrique en 230V.\r\n\r\nVous pourrez par exemple associer votre récepteur au capteur d''ouverture de fenêtre et ou encore à l''interrupteur sans fil.', '2014-05-05 11:23:18'),
-(4, 1, '2401089', 'Caméra de surveillance intérieure', 55, '299', 'Présentation-HC2.pdf', 'Avec la caméra de surveillance : \r\n- En cas d''intrusion à votre domicile, ou d''incident domestique (si vous êtes équipé du détecteur de fumée, de présence d''eau…), des photos sont prises et vous sont immédiatement envoyées sur votre téléphone portable. Vous pouvez ainsi vérifier qu''il y a un problème et agir en conséquence.\r\n \r\n- Vous pouvez également, quand vous le souhaitez, déclencher la caméra à distance avec votre smartphone, votre tablette ou votre ordinateur. Ainsi, vous gardez un oeil sur votre maison, à n''importe quel moment, où que vous soyez.\r\n \r\nPour aller plus loin : \r\nLa caméra est compatible avec les box domotiques Somfy. Cela vous permet en cas de déclenchement d’un détecteur, de pouvoir vérifier à tout moment ce qui se passe chez vous.\r\nCaméra IP wifi\r\nAlimentation 230V\r\nUsage intérieur uniquement\r\nIllumination mini : 1 lux\r\nStockage des photos sur serveur sécurisé\r\nSéquences de 2 minutes avec 1 photo par seconde\r\nPhotos en couleur horodatées\r\nRésolution : 640x480 pixels\r\nPossibilité d''archiver, copier, imprimer ou envoyer les photos par e-mail\r\nAngle de détection : 47°', '2014-05-05 11:28:24'),
-(5, 1, '2401149', 'Caméra de surveillance IP extérieure', 40, '429', 'Présentation-HC2', 'En complément de Somfy Box ou d''une alarme Protexiom, cette caméra de surveillance garantira votre sécurité et votre tranquillité grâce à sa visualisation de l''extérieur du domicile sur Smartphone ou ordinateur en cas de déclenchement de l''alarme, ou surveillance à distance à n''importe quel moment, où que vous soyez.\r\n\r\nType : Caméra IP couleur.\r\nAngle de vue horizontal : 66°.\r\nIllumination mini : 1 lux (pas de fonctionnement dans le noir)\r\nSensibilité à la lumière : 100 000 lux.\r\nRésolution maxi de l''image : 800 x 600 pixels.\r\nT°C d''utilisation : -20°C à 50°C.\r\nNombre maxi de caméra : 4.\r\nAngle de vue horizontal : 66°\r\nAlimentation : par câble Ethernet et boîtier POE (Power Over Ethernet)', '2014-05-05 11:32:02'),
-(6, 3, '2401130', 'Récepteur pour thermostat', 25, '72', '2401104.pdf', 'Permet de compléter une installation de chauffage avec radiateur électrique sans fil pilote déjà équipée du thermostat sans fil .\r\n\r\nAlimentation : 230V, 50Hz\r\nTempérature d''utilisation 0°C à +50°C\r\nIndice de protection IP 55\r\nPorté radio champ libre (avec le thermostat) 200m\r\nPuissance maxi 2500W', '2014-05-05 11:39:59'),
-(7, 3, '1810849', 'Récepteur d''éclairage intérieur RTS', 40, '74', '2401104.pdf', 'Grâce à ce récepteur, pilotez à distance avec votre télécommande un éclairage ou un appareil électrique de votre choix pour une puissance maximale de 500 W.\r\nPour usage intérieur.\r\nDimensions : 80 x 80 x 45 mm.', '2014-05-05 12:13:42'),
-(8, 3, 'RTS1254', 'Télécommande Telis 1 RTS Silver', 15, '64', 'notice_telis1rts.pdf', 'La Telis 1 RTS est une télécommande radio sans fil compatible uniquement avec des produits équipés de la Radio Technology Somfy (RTS) : moteur de volet roulant, moteur de store, etc.\r\n\r\n \r\n\r\nLa Telis 1 RTS s''utilise : \r\n- pour commander un seul volet roulant / store à la fois - la Telis 1 RTS est une commande individuelle ; \r\n- pour commander plusieurs volets roulants et/ou stores en même temps - la Telis 1 RTS est une commande de groupe.', '2014-05-05 12:17:19'),
-(9, 4, '2401184', 'Motorisation Roll Up RTS pour store d''intérieur', 56, '249', 'notice_conso_wirefree.pdf', 'Une solution prête à poser pour motoriser les stores rouleaux intérieurs jusqu''4 m2 et 6 kg et 1.82 m de largeur.\r\nCaractéristiques techniques de la motorisation : \r\n- tension assignée en Volts : 12 V\r\n- température de fonctionnement : de 0°C à +60°C \r\n- diamètre du tube en aluminium : 32 mm\r\n- fonctionne avec des piles lithium uniquement  \r\n- à installer dans un endroit sec \r\n- à utiliser en intérieur uniquement  \r\n- durée de vie des piles : 2 ans à raison d''un cycle par jour (1 montée / 1 descente)\r\n- piles lithium disponibles dans le commerce, sur notre boutique en ligne ou auprès de votre installateur\r\n \r\nCaractéristiques techniques du point de commande : \r\n- dimensions du point de commande (Hxlxe) : 80x80x10 (en mm)\r\n- fonctionne avec une pile 3V de type CR 2430 \r\n- emplacement conseillé du point de commande : à proximité du store', '2014-05-05 12:29:54'),
-(10, 4, '1810846', 'Télécommande Telis 4 RTS Lounge', 40, '74', 'notice_telis4rts.pdf', 'La Telis 1 RTS est une télécommande radio sans fil compatible uniquement avec des produits équipés de la Radio Technology Somfy (RTS) : moteur de volet roulant, moteur de store, etc.\r\n\r\n \r\n\r\nLa Telis 1 RTS s''utilise :\r\n- pour commander un seul volet roulant / store à la fois - la Telis 1 RTS est une commande individuelle ; \r\n- pour commander plusieurs volets roulants et/ou stores en même temps - la Telis 1 RTS est une commande de groupe.', '2014-05-05 12:33:58');
+(1, 2, 'HC2_1', 'Home Center 2', 20, 599, 'Présentation-HC2.pdf', 'Le contrôleur Domotique Z-wave le plus puissant du marché et une interface graphique inégalée !\r\n\r\nDoté d''un design moderne tout aluminium en faisant un objet agréable à voir comme à utiliser, il dispose aussi de caractéristiques dignes d''un petit ordinateur avec un processeur Intel cadencé à 1.6Ghz et 1Go de mémoire RAM. Il a également deux disques SSD (MLC et SLC) pour le stockage du système et le système de sauvegarde.', '2014-05-05 11:01:43'),
+(2, 2, '510700', 'Thomson Box', 15, 299, 'Présentation-HC2.pdf', 'La gamme TConnect est la solution idéale pour piloter et contrôler la maison très facilement, même pour les novices en nouvelles technologies.\r\n\r\nGrâce à la technologie TConnect, vous pouvez sécuriser votre maison, vos biens et vos proches, programmer tous vos équipements électriques, commander vos éclairages, gérer vos chauffages, piloter vos volets, votre motorisation de portail, contrôler vos consommations énergétiques...\r\n\r\nTous les produits de la gamme TConnect sont compatibles entre eux. Il est donc tout à fait possible de faire évoluer vos installations au fur et à mesure de vos besoins, et sur- tout en fonction de votre budget.\r\n\r\nEt votre quotidien devient plus facile.', '2014-05-05 11:12:18'),
+(3, 2, 'KIT_DEV_EO', 'Kit découverte EnOcean', 25, 119, 'Présentation-HC2.pdf', 'Il convient donc particulièrement aux installations électriques sans encastrement, comme par exemple les rénovations ou modifications d’installation domestique.\r\n\r\nLes capteurs et interrupteurs sont 100% autonomes et ne nécessitent aucun raccordement électrique ni pile...\r\n\r\nL''actionneur récepteur vous permettra de piloter un éclairage, votre chauffage ou toute source électrique en 230V.\r\n\r\nVous pourrez par exemple associer votre récepteur au capteur d''ouverture de fenêtre et ou encore à l''interrupteur sans fil.', '2014-05-05 11:23:18'),
+(4, 1, '2401089', 'Caméra de surveillance intérieure', 55, 299, 'Présentation-HC2.pdf', 'Avec la caméra de surveillance : \r\n- En cas d''intrusion à votre domicile, ou d''incident domestique (si vous êtes équipé du détecteur de fumée, de présence d''eau…), des photos sont prises et vous sont immédiatement envoyées sur votre téléphone portable. Vous pouvez ainsi vérifier qu''il y a un problème et agir en conséquence.\r\n \r\n- Vous pouvez également, quand vous le souhaitez, déclencher la caméra à distance avec votre smartphone, votre tablette ou votre ordinateur. Ainsi, vous gardez un oeil sur votre maison, à n''importe quel moment, où que vous soyez.\r\n \r\nPour aller plus loin : \r\nLa caméra est compatible avec les box domotiques Somfy. Cela vous permet en cas de déclenchement d’un détecteur, de pouvoir vérifier à tout moment ce qui se passe chez vous.\r\nCaméra IP wifi\r\nAlimentation 230V\r\nUsage intérieur uniquement\r\nIllumination mini : 1 lux\r\nStockage des photos sur serveur sécurisé\r\nSéquences de 2 minutes avec 1 photo par seconde\r\nPhotos en couleur horodatées\r\nRésolution : 640x480 pixels\r\nPossibilité d''archiver, copier, imprimer ou envoyer les photos par e-mail\r\nAngle de détection : 47°', '2014-05-05 11:28:24'),
+(5, 1, '2401149', 'Caméra de surveillance IP extérieure', 40, 429, 'Présentation-HC2', 'En complément de Somfy Box ou d''une alarme Protexiom, cette caméra de surveillance garantira votre sécurité et votre tranquillité grâce à sa visualisation de l''extérieur du domicile sur Smartphone ou ordinateur en cas de déclenchement de l''alarme, ou surveillance à distance à n''importe quel moment, où que vous soyez.\r\n\r\nType : Caméra IP couleur.\r\nAngle de vue horizontal : 66°.\r\nIllumination mini : 1 lux (pas de fonctionnement dans le noir)\r\nSensibilité à la lumière : 100 000 lux.\r\nRésolution maxi de l''image : 800 x 600 pixels.\r\nT°C d''utilisation : -20°C à 50°C.\r\nNombre maxi de caméra : 4.\r\nAngle de vue horizontal : 66°\r\nAlimentation : par câble Ethernet et boîtier POE (Power Over Ethernet)', '2014-05-05 11:32:02'),
+(6, 3, '2401130', 'Récepteur pour thermostat', 25, 72, '2401104.pdf', 'Permet de compléter une installation de chauffage avec radiateur électrique sans fil pilote déjà équipée du thermostat sans fil .\r\n\r\nAlimentation : 230V, 50Hz\r\nTempérature d''utilisation 0°C à +50°C\r\nIndice de protection IP 55\r\nPorté radio champ libre (avec le thermostat) 200m\r\nPuissance maxi 2500W', '2014-05-05 11:39:59'),
+(7, 3, '1810849', 'Récepteur d''éclairage intérieur RTS', 40, 74, '2401104.pdf', 'Grâce à ce récepteur, pilotez à distance avec votre télécommande un éclairage ou un appareil électrique de votre choix pour une puissance maximale de 500 W.\r\nPour usage intérieur.\r\nDimensions : 80 x 80 x 45 mm.', '2014-05-05 12:13:42'),
+(8, 3, 'RTS1254', 'Télécommande Telis 1 RTS Silver', 15, 64, 'notice_telis1rts.pdf', 'La Telis 1 RTS est une télécommande radio sans fil compatible uniquement avec des produits équipés de la Radio Technology Somfy (RTS) : moteur de volet roulant, moteur de store, etc.\r\n\r\n \r\n\r\nLa Telis 1 RTS s''utilise : \r\n- pour commander un seul volet roulant / store à la fois - la Telis 1 RTS est une commande individuelle ; \r\n- pour commander plusieurs volets roulants et/ou stores en même temps - la Telis 1 RTS est une commande de groupe.', '2014-05-05 12:17:19'),
+(9, 4, '2401184', 'Motorisation Roll Up RTS pour store d''intérieur', 56, 249, 'notice_conso_wirefree.pdf', 'Une solution prête à poser pour motoriser les stores rouleaux intérieurs jusqu''4 m2 et 6 kg et 1.82 m de largeur.\r\nCaractéristiques techniques de la motorisation : \r\n- tension assignée en Volts : 12 V\r\n- température de fonctionnement : de 0°C à +60°C \r\n- diamètre du tube en aluminium : 32 mm\r\n- fonctionne avec des piles lithium uniquement  \r\n- à installer dans un endroit sec \r\n- à utiliser en intérieur uniquement  \r\n- durée de vie des piles : 2 ans à raison d''un cycle par jour (1 montée / 1 descente)\r\n- piles lithium disponibles dans le commerce, sur notre boutique en ligne ou auprès de votre installateur\r\n \r\nCaractéristiques techniques du point de commande : \r\n- dimensions du point de commande (Hxlxe) : 80x80x10 (en mm)\r\n- fonctionne avec une pile 3V de type CR 2430 \r\n- emplacement conseillé du point de commande : à proximité du store', '2014-05-05 12:29:54'),
+(10, 4, '1810846', 'Télécommande Telis 4 RTS Lounge', 40, 74, 'notice_telis4rts.pdf', 'La Telis 1 RTS est une télécommande radio sans fil compatible uniquement avec des produits équipés de la Radio Technology Somfy (RTS) : moteur de volet roulant, moteur de store, etc.\r\n\r\n \r\n\r\nLa Telis 1 RTS s''utilise :\r\n- pour commander un seul volet roulant / store à la fois - la Telis 1 RTS est une commande individuelle ; \r\n- pour commander plusieurs volets roulants et/ou stores en même temps - la Telis 1 RTS est une commande de groupe.', '2014-05-05 12:33:58');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `products_commands`
+--
+
+CREATE TABLE IF NOT EXISTS `products_commands` (
+  `command_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`command_id`,`product_id`),
+  KEY `IDX_8F3F039F33E1689A` (`command_id`),
+  KEY `IDX_8F3F039F4584665A` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `products_commands`
+--
+
+INSERT INTO `products_commands` (`command_id`, `product_id`) VALUES
+(1, 1),
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `role`
+--
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Technicien'),
+(2, 'Commercial'),
+(3, 'Client'),
+(4, 'Administrateur');
 
 -- --------------------------------------------------------
 
@@ -193,17 +320,26 @@ CREATE TABLE IF NOT EXISTS `user` (
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
   `credentials_expired` tinyint(1) NOT NULL,
   `credentials_expire_at` datetime DEFAULT NULL,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zipcode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `userrole` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
-  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`),
+  KEY `userrole` (`userrole`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
-(1, 'test', 'test', 'test', 'test', 1, 'dl1z3xp3gigc08gc8wsokckwc4cgo0k', 'aZA1Wp4bHI3WMWUAR9dbBUAlsWq9u5zWVRRePRe39wEMMbh5YSVs3Wqa/mR2j3YKsJ8GLQOIEROAJRdrfpkF8g==', '2014-05-05 13:15:46', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 0, NULL);
+INSERT INTO `user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `firstname`, `lastname`, `address`, `zipcode`, `city`, `phone`, `userrole`) VALUES
+(5, 'arnaud', 'arnaud', 'arnaud.wbc@gmail.com', 'arnaud.wbc@gmail.com', 1, 'pxlyd5nuvhck8oscw0s4404wk0804wk', 'ccByDQXAy2FOYxjfGVf/of6vXuxmgfoby++qWtSdv+yOgiSBAB5+m6w1ZcbgyrbB0XKDunR4bsjuquXlCGFeVg==', '2014-05-06 13:50:37', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(6, 'afdal', 'afdal', 'afdal@franklin.com', 'afdal@franklin.com', 0, '79wkojbawnc40w0g4k08wskk8o04o00', '7XyqocIYRtiK2vID0WlsLq+PVtJZvg51JUMMy/DuPKRwQgiGCQdMYMuT506q1Xrv0m3eIJwKZFX0OSXfIks9oA==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'afdal', 'ouloube', 'nowhere', '76748', 'paris', '33674220113', 2);
 
 -- --------------------------------------------------------
 
@@ -224,6 +360,12 @@ CREATE TABLE IF NOT EXISTS `user_intervention` (
 --
 
 --
+-- Contraintes pour la table `command`
+--
+ALTER TABLE `command`
+  ADD CONSTRAINT `FK_4177D3487B00651C` FOREIGN KEY (`status`) REFERENCES `commandstatus` (`id`);
+
+--
 -- Contraintes pour la table `image`
 --
 ALTER TABLE `image`
@@ -233,7 +375,8 @@ ALTER TABLE `image`
 -- Contraintes pour la table `intervention`
 --
 ALTER TABLE `intervention`
-  ADD CONSTRAINT `FK_D11814AB39EA8CD9` FOREIGN KEY (`interventioncategory`) REFERENCES `interventioncategory` (`id`);
+  ADD CONSTRAINT `FK_D11814AB39EA8CD9` FOREIGN KEY (`interventioncategory`) REFERENCES `interventioncategory` (`id`),
+  ADD CONSTRAINT `FK_D11814AB845D9504` FOREIGN KEY (`interventionstatus`) REFERENCES `interventionstatus` (`id`);
 
 --
 -- Contraintes pour la table `interventionsusers`
@@ -247,6 +390,19 @@ ALTER TABLE `interventionsusers`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `FK_D34A04AD64C19C1` FOREIGN KEY (`category`) REFERENCES `category` (`id`);
+
+--
+-- Contraintes pour la table `products_commands`
+--
+ALTER TABLE `products_commands`
+  ADD CONSTRAINT `FK_8F3F039F4584665A` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_8F3F039F33E1689A` FOREIGN KEY (`command_id`) REFERENCES `command` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `FK_8D93D649F114F21B` FOREIGN KEY (`userrole`) REFERENCES `role` (`id`);
 
 --
 -- Contraintes pour la table `user_intervention`

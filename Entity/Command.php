@@ -47,6 +47,14 @@ class Command
      **/
     private $products;
     
+            /**
+     * @var \Fkl\FranklinBundle\Entity\CommandStatus
+     * 
+     * @ORM\ManyToOne(targetEntity="CommandStatus")
+     * @ORM\JoinColumn(name="status", referencedColumnName="id")
+     */
+    private $status;
+    
     /**
      * Get id
      *
@@ -164,5 +172,28 @@ class Command
     public function getInfos()
     {
         return $this->infos;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \Fkl\FranklinBundle\Entity\CommandStatus $status
+     * @return Command
+     */
+    public function setStatus(\Fkl\FranklinBundle\Entity\CommandStatus $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \Fkl\FranklinBundle\Entity\CommandStatus 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -73,6 +73,15 @@ class User extends FOSUser
      * @ORM\Column(name="phone", type="string", length=255)
      */
     protected $phone;
+    
+    
+        /**
+     * @var \Fkl\FranklinBundle\Entity\Role
+     * 
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumn(name="userrole", referencedColumnName="id", nullable=false)
+     */
+    private $role;
 
     /**
      * Get id
@@ -196,10 +205,10 @@ class User extends FOSUser
     /**
      * Set zipcode
      *
-     * @param \int $zipcode
+     * @param  $zipcode
      * @return User
      */
-    public function setZipcode(\int $zipcode)
+    public function setZipcode($zipcode)
     {
         $this->zipcode = $zipcode;
 

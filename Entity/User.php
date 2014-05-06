@@ -34,35 +34,35 @@ class User extends FOSUser
         /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     protected $firstname;
     
      /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      */
     protected $lastname;
     
      /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
     protected $address;
     
         /**
      * @var string
      *
-     * @ORM\Column(name="zipcode", type="string", length=255)
+     * @ORM\Column(name="zipcode", type="string", length=255, nullable=true)
      */
     protected $zipcode;
     
             /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     protected $city;
     
@@ -70,9 +70,18 @@ class User extends FOSUser
                 /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     protected $phone;
+    
+    
+        /**
+     * @var \Fkl\FranklinBundle\Entity\Role
+     * 
+     * @ORM\ManyToOne(targetEntity="Role")
+     * @ORM\JoinColumn(name="userrole", referencedColumnName="id")
+     */
+    private $role;
 
     /**
      * Get id
@@ -261,4 +270,30 @@ class User extends FOSUser
     {
         return $this->phone;
     }
+
+    /**
+     * Set role
+     *
+     * @param \Fkl\FranklinBundle\Entity\Role $role
+     * @return User
+     */
+    public function setRole(\Fkl\FranklinBundle\Entity\Role $role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Fkl\FranklinBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+    
+        
+
 }
