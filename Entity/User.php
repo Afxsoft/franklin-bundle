@@ -55,7 +55,7 @@ class User extends FOSUser
         /**
      * @var string
      *
-     * @ORM\Column(name="zipcode", type="integer")
+     * @ORM\Column(name="zipcode", type="string", length=255)
      */
     protected $zipcode;
     
@@ -196,10 +196,10 @@ class User extends FOSUser
     /**
      * Set zipcode
      *
-     * @param \int $zipcode
+     * @param  $zipcode
      * @return User
      */
-    public function setZipcode(\int $zipcode)
+    public function setZipcode($zipcode)
     {
         $this->zipcode = $zipcode;
 

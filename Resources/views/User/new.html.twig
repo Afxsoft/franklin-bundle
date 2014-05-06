@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:User:common.html.twig' %}
+
+{% set title = 'New User'|trans %}
+
+{% block errors %}{{ form_errors(form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+{% endblock %}

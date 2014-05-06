@@ -63,4 +63,8 @@ FklFranklinBundle_admin_intervention:
         
 FklFranklinBundle_admin_order:
         resource: "@FklFranklinBundle/Resources/config/routing/command.yml"
-        prefix:   /admin/order        
+        prefix:   /admin/order    
+        
+FklFranklinBundle_admin_user:
+        resource: "@FklFranklinBundle/Resources/config/routing/user.yml"
+        prefix:   /admin/user

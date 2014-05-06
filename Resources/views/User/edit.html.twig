@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:User:common.html.twig' %}
+
+{% set title = 'User edit'|trans %}
+
+{% block errors %}{{ form_errors(edit_form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(edit_form) }}
+
+{% endblock %}

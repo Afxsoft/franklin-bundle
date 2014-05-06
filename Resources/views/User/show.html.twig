@@ -1,0 +1,42 @@
+{% extends 'FklFranklinBundle:User:common.html.twig' %}
+
+{% set title = 'User'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Username:</label>
+            {{ entity.username }}
+    </li>
+    <li class="list-group-item">
+        <label>Email:</label>
+            {{ entity.email }}
+    </li>
+
+    <li class="list-group-item">
+        <label>Firstname:</label>
+            {{ entity.firstname }}
+    </li>
+    <li class="list-group-item">
+        <label>Lastname:</label>
+            {{ entity.lastname }}
+    </li>
+    <li class="list-group-item">
+        <label>Address:</label>
+            {{ entity.address }}
+    </li>
+    <li class="list-group-item">
+        <label>Zipcode:</label>
+            {{ entity.zipcode }}
+    </li>
+    <li class="list-group-item">
+        <label>City:</label>
+            {{ entity.city }}
+    </li>
+    <li class="list-group-item">
+        <label>Phone:</label>
+            {{ entity.phone }}
+    </li>
+</ul>
+
+{% endblock %}

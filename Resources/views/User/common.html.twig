@@ -1,0 +1,33 @@
+{% extends 'DevelopatheCrudBundle::admin.html.twig' %}
+
+{% block contextualMenu %}
+
+<div class="btn-group">
+    <a href="{{ path('admin_user') }}" class="btn btn-default{%if 'admin_user' == app.request.attributes.get('_route')%} active{% endif %}">
+        <span class="glyphicon glyphicon-list"></span>
+        {% trans %}List{% endtrans %}
+    </a>
+    <a href="{{ path('admin_user_new') }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        {% trans %}New User{% endtrans %}
+    </a>
+</div>
+
+{% if entity is defined and entity.id %}
+<div class="btn-group">
+    <a class="btn btn-default {%if 'admin_user_show' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('admin_user_show', {'id': entity.id}) }}">
+        {% trans %}Show{% endtrans %}
+    </a>
+    <a class="btn btn-default {%if 'admin_user_edit' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('admin_user_edit', {'id': entity.id}) }}">
+        <span class="glyphicon glyphicon-edit"></span>
+        {% trans %}Edit{% endtrans %}
+    </a>
+    <a class="btn btn-default {%if 'admin_user_delete' == app.request.attributes.get('_route')%} active{% endif %}" href="{{ path('admin_user_delete', {'id': entity.id}) }}">
+        <span class="glyphicon glyphicon-remove"></span>
+        {% trans %}Delete{% endtrans %}
+    </a>    
+</div>
+{% endif %}
+
+
+{% endblock contextualMenu %}
