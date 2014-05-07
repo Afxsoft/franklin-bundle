@@ -71,10 +71,7 @@ class Intervention
      */
     private $feedback;
     /**
-     * @var \Fkl\FranklinBundle\Entity\User
-     * 
-     * @ORM\ManyToMany(targetEntity="User")
-     * @ORM\JoinTable(name="interventionsUsers")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="interventions")
      */
     private $users;
 

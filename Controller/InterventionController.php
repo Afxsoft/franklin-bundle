@@ -21,8 +21,9 @@ class InterventionController extends Controller
      */
     public function indexAction($page = 1)
     {
-        $em = $this->getDoctrine()->getManager();
+        $role_id= $this->getUser()->getRole()->getId();
         
+        $em = $this->getDoctrine()->getManager();
         $count = $em
             ->getRepository('FklFranklinBundle:Intervention')
             ->createQueryBuilder('id')
@@ -33,9 +34,13 @@ class InterventionController extends Controller
 
         $pages = ceil($count / 20);
         
+        if( $role_id != 4 ){            
+        $entities = $this->getUser()->getInterventions();
+        }
+        else{
         $entities = $em->getRepository('FklFranklinBundle:Intervention')
         ->findBy(array(), NULL, 20, (($page - 1) * 20));
-
+        }
         return $this->render('FklFranklinBundle:Intervention:index.html.twig', array(
             'entities' => $entities,
             'pages' => $pages,
@@ -112,7 +117,7 @@ class InterventionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FklFranklinBundle:Intervention')->find($id);
-
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Intervention entity.');
         }

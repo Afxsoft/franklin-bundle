@@ -55,6 +55,14 @@ class Command
      */
     private $status;
     
+    
+        /**
+     * @var \Fkl\FranklinBundle\Entity\User
+     * 
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
     /**
      * Get id
      *
@@ -195,5 +203,28 @@ class Command
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Fkl\FranklinBundle\Entity\User $user
+     * @return Command
+     */
+    public function setUser(\Fkl\FranklinBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Fkl\FranklinBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

@@ -25,9 +25,13 @@ class User extends FOSUser
      */
     protected $id;
     
-    /**
-     * @ORM\ManyToMany(targetEntity="Intervention", inversedBy="users")
+        /**
+     * @var \Fkl\FranklinBundle\Entity\User
+     * 
+     * @ORM\ManyToMany(targetEntity="Intervention")
+     * @ORM\JoinTable(name="interventionsUsers")
      */
+
     protected $interventions;
     
     
@@ -82,7 +86,11 @@ class User extends FOSUser
      * @ORM\JoinColumn(name="userrole", referencedColumnName="id")
      */
     private $role;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Command", mappedBy="$user")
+     */
+    protected $commands;
     /**
      * Get id
      *
@@ -96,7 +104,7 @@ class User extends FOSUser
     public function __construct()
     {
         parent::__construct();
-        $this->users = new ArrayCollection();
+        $this->interventions = new ArrayCollection();
     }
 
 
@@ -296,4 +304,37 @@ class User extends FOSUser
     
         
 
+
+    /**
+     * Add commands
+     *
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
+     * @return User
+     */
+    public function addCommand(\Fkl\FranklinBundle\Entity\Command $commands)
+    {
+        $this->commands[] = $commands;
+
+        return $this;
+    }
+
+    /**
+     * Remove commands
+     *
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
+     */
+    public function removeCommand(\Fkl\FranklinBundle\Entity\Command $commands)
+    {
+        $this->commands->removeElement($commands);
+    }
+
+    /**
+     * Get commands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommands()
+    {
+        return $this->commands;
+    }
 }
