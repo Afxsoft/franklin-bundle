@@ -49,6 +49,7 @@ class CommandController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Command();
+        $entity->setUser($this->getUser());
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
