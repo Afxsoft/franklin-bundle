@@ -7,6 +7,7 @@
         <span class="glyphicon glyphicon-list"></span>
         {% trans %}List{% endtrans %}
     </a>
+                        {% if app.user.role.id == 4 %}
     <a href="{{ path('admin_intervention_new') }}" class="btn btn-primary{%if 'admin_intervention_new' == app.request.attributes.get('_route')%} active{% endif %}">
         <span class="glyphicon glyphicon-plus"></span>
         {% trans %}New Intervention{% endtrans %}
@@ -14,6 +15,8 @@
         <a class = "btn btn-default" href="{{ path('admin_intervention_category_root') }}">
                                 {% trans %}Categories{% endtrans %}
                             </a>
+                                {% endif %}
+
 </div>
 
 {% if entity is defined and entity.id %}

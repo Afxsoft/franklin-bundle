@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Fkl\FranklinBundle\Entity\User;
 use Fkl\FranklinBundle\Form\UserType;
+use Fkl\FranklinBundle\Form\UserEditType;
 
 /**
  * User controller.
@@ -50,7 +51,6 @@ class UserController extends Controller
     {
         $entity = new User();
         $entity->setSuperAdmin(true);
-        $entity->setEnabled(true);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -155,7 +155,7 @@ class UserController extends Controller
     */
     private function createEditForm(User $entity)
     {
-        $form = $this->createForm(new UserType(), $entity, array(
+        $form = $this->createForm(new UserEditType(), $entity, array(
             'action' => $this->generateUrl('admin_user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
