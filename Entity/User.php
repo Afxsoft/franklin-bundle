@@ -88,7 +88,7 @@ class User extends FOSUser
     private $role;
     
     /**
-     * @ORM\OneToMany(targetEntity="Command", mappedBy="$user")
+     * @ORM\OneToMany(targetEntity="Command", mappedBy="user")
      */
     protected $commands;
     /**
@@ -337,4 +337,6 @@ class User extends FOSUser
     {
         return $this->commands;
     }
+    
+
 }

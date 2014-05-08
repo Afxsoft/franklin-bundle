@@ -88,7 +88,7 @@ class User extends FOSUser
     private $role;
     
     /**
-     * @ORM\OneToMany(targetEntity="Command", mappedBy="$user")
+     * @ORM\OneToMany(targetEntity="Command", mappedBy="user")
      */
     protected $commands;
     /**
@@ -304,4 +304,37 @@ class User extends FOSUser
     
         
 
+
+    /**
+     * Add commands
+     *
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
+     * @return User
+     */
+    public function addCommand(\Fkl\FranklinBundle\Entity\Command $commands)
+    {
+        $this->commands[] = $commands;
+
+        return $this;
+    }
+
+    /**
+     * Remove commands
+     *
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
+     */
+    public function removeCommand(\Fkl\FranklinBundle\Entity\Command $commands)
+    {
+        $this->commands->removeElement($commands);
+    }
+
+    /**
+     * Get commands
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommands()
+    {
+        return $this->commands;
+    }
 }

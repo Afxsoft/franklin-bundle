@@ -5,6 +5,7 @@ namespace Fkl\FranklinBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class InterventionType extends AbstractType
 {
@@ -21,8 +22,14 @@ class InterventionType extends AbstractType
             ->add('address')
             ->add('zip')
             ->add('city')
-            ->add('users')
-            ->add('category')
+->add('users', 'entity', array(
+    'class' => 'FklFranklinBundle:User',
+    'query_builder' => function(EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+            ->where('u.role < :int')->setParameter('int', 3);
+    },
+            'multiple' => true
+))          ->add('category')
                             ->add('status')
 
             ->add('feedback')

@@ -16,12 +16,14 @@ class CommandType extends AbstractType {
         $builder
                 ->add('sku')
                 ->add('date', 'datetime', array('date_widget' => 'single_text'))
-                ->add('products')
                 ->add('infos')
                 ->add('status')
+                ->add('products');
 
 
-        ;
+
+
+        
     }
 
     /**

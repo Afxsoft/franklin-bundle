@@ -49,6 +49,8 @@ class UserController extends Controller
     public function createAction(Request $request)
     {
         $entity = new User();
+        $entity->setSuperAdmin(true);
+        $entity->setEnabled(true);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 

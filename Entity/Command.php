@@ -59,7 +59,7 @@ class Command
         /**
      * @var \Fkl\FranklinBundle\Entity\User
      * 
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="commands")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;

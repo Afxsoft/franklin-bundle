@@ -21,6 +21,8 @@ class CommandController extends Controller
      */
     public function indexAction($page = 1)
     {
+                $role_id= $this->getUser()->getRole()->getId();
+
         $em = $this->getDoctrine()->getManager();
         
         $count = $em
@@ -32,9 +34,13 @@ class CommandController extends Controller
         ;
 
         $pages = ceil($count / 20);
-        
+                if( $role_id != 4 ){            
+        $entities = $this->getUser()->getCommands();
+        }
+        else{
         $entities = $em->getRepository('FklFranklinBundle:Command')
         ->findBy(array(), NULL, 20, (($page - 1) * 20));
+        }
 
         return $this->render('FklFranklinBundle:Command:index.html.twig', array(
             'entities' => $entities,
