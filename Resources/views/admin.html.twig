@@ -33,11 +33,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="{{ path('admin') }}" class="navbar-brand">Franklin</a>
+                    <a href="#" class="navbar-brand">Franklin</a>
                 </div>
 
                 <div role="navigation" class="collapse navbar-collapse">
                     <ul  class="nav navbar-nav navbar-right">
+                        
+                        {% if app.user.role.id == 4 %}
                                         <li><a href="{{ path('admin_user_root') }}">
                                 {% trans %}Utilisateurs{% endtrans %}
                             </a>
@@ -50,6 +52,8 @@
                                 {% trans %}Produits{% endtrans %}
                             </a>
                         </li>
+                        {% endif %}
+
                         <li><a href="{{ path('admin_intervention_root') }}">
                                 {% trans %}Interventions{% endtrans %}
                             </a>
