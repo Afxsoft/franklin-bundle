@@ -8,6 +8,10 @@ class ContactController extends Controller
 {
     public function indexAction()
     {
+        
+        
         return $this->render('FklFranklinBundle:Contact:index.html.twig');
+        
+        
     }
 }
