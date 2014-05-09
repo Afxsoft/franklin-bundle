@@ -11,9 +11,9 @@
 
             <ul class="list-group">
                 <li class="list-group-item ">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Adresse mail</strong></span> adresse</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Nom complets</strong></span> nom et prenom</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Secteur d'activité</strong></span> Ile de de France</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Adresse mail</strong></span> {{app.user.email}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Nom complets</strong></span> {{app.user.firstname}} {{app.user.lastname}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Secteur d'activité</strong></span> {{app.user.zipcode}}</li>
 
             </ul> 
 
