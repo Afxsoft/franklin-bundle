@@ -71,10 +71,7 @@ class Intervention
      */
     private $feedback;
     /**
-     * @var \Fkl\FranklinBundle\Entity\User
-     * 
-     * @ORM\ManyToMany(targetEntity="User")
-     * @ORM\JoinTable(name="interventionsUsers")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="interventions")
      */
     private $users;
 
@@ -330,5 +327,28 @@ class Intervention
     public function getFeedback()
     {
         return $this->feedback;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \Fkl\FranklinBundle\Entity\InterventionStatus $status
+     * @return Intervention
+     */
+    public function setStatus(\Fkl\FranklinBundle\Entity\InterventionStatus $status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \Fkl\FranklinBundle\Entity\InterventionStatus 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

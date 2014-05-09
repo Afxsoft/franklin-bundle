@@ -337,4 +337,6 @@ class User extends FOSUser
     {
         return $this->commands;
     }
+    
+
 }

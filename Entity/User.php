@@ -29,7 +29,7 @@ class User extends FOSUser
      * @var \Fkl\FranklinBundle\Entity\User
      * 
      * @ORM\ManyToMany(targetEntity="Intervention")
-     * @ORM\JoinTable(name="interventionsUsers")
+     * @ORM\JoinTable(name="intervention_user")
      */
 
     protected $interventions;
