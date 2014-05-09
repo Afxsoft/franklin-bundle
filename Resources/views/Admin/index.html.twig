@@ -3,7 +3,7 @@
 {% set title = 'Administration'|trans %}
 {% block body %}
     <div class="row">
-        <div class="col-sm-10"><h1>Nom de l'utilisateur</h1></div>
+        <div class="col-sm-10"><h1>{{app.user.username}}</h1></div>
         <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
     </div>
     <div class="row">
@@ -11,24 +11,24 @@
 
             <ul class="list-group">
                 <li class="list-group-item ">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Adresse mail</strong></span> adresse</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Nom complets</strong></span> nom et prenom</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Secteur d'activité</strong></span> Ile de de France</li>
-
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Adresse mail</strong></span> {{app.user.email}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Nom complets</strong></span> {{app.user.firstname}} {{app.user.lastname}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Secteur d'activité</strong></span> {{app.user.zipcode}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Rôle</strong></span> {{app.user.role}}</li>
             </ul> 
 
 
-
+                        {% if app.user.role.id < 4 %}
             <ul class="list-group">
                 <li class="list-group-item">Activité <i class="fa fa-dashboard fa-1x"></i></li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Chiffre d'affaire du mois</strong></span> 125</li>
             </ul> 
-
+                        {% endif %}
         </div><!--/col-3-->
         <div class="col-sm-3">
             <a href="{{ path('admin_intervention_root') }}" class="btn btn-primary btn-lg btn-block">Interventions</a>
             <a href="{{ path('admin_order_root') }}" class="btn btn-primary btn-lg btn-block">Commandes</a>
-            <a href="{{ path('admin_product_root') }}" class="btn btn-primary btn-lg btn-block">Produits</a>
+            <a href="{{ path('admin_user_root') }}" class="btn btn-primary btn-lg btn-block">Utilisateurs</a>
         </div><!--/tab-pane-->
     </div><!--/tab-content-->
 

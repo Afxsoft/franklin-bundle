@@ -374,13 +374,8 @@ i.installation{
 }
 
 .contact-form{
-    background: rgba(0, 0, 0, 0.5);
     padding-bottom: 95px;
     padding-top: 74px;
-    border-radius: 14px;
-    position: absolute;
-    z-index: 999;
-    top: 14%;
 }
 .contact-form .input-box,textarea {
     width: 100%;
@@ -391,8 +386,15 @@ i.installation{
     float: right;
 }
 .contact-form h1 {
-    color: #fff;
+    color: #404040;;
     margin-bottom: 48px;
+}
+.centrage{
+    max-width: 480px;
+    margin: 0 auto;
+}
+.centrage .jumbotron{
+    opacity: 0.9;
 }
 .contact .jumbotron{
     opacity: 0.9;
@@ -640,4 +642,7 @@ Formulaire de connection
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+#map{
+    height: 300px;
 }

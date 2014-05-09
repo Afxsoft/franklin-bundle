@@ -1,0 +1,49 @@
+{% extends 'FklFranklinBundle::base.html.twig' %}
+
+
+{% block stylesheets %}
+{% endblock %}  
+
+{% block slideshow %}
+
+        <div id="map">
+            <p>Veuillez patienter pendant le chargement de la carte...</p>
+        </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <form role="form" action="#" class="contact-form container">
+            <h1>Nous contacter</h1>
+            <div class="centrage">
+                <div class="jumbotron">
+                    <p><span class="glyphicon glyphicon-phone-alt"> 01 48 56 32 14</span></p>
+                    <p><span class="glyphicon glyphicon-envelope"> contact@franklin-domotique.com</span></p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <input type="text" name="name" placeholder="Votre nom" class="form-control input-box">
+                    </div>
+                    <div class="col-lg-7">
+                        <input type="email" name="email" placeholder="Vote email" class="form-control input-box">
+                    </div>
+                    <div class="col-lg-7">
+                        <input type="text" name="subject" placeholder="Sujet" class="form-control input-box">
+                    </div>
+
+                <div class="col-md-12" >
+                    <textarea name="message" class="form-control textarea-box" placeholder="Votre message"></textarea>
+                </div>
+                </div>
+                <button class="btn btn-primary " >Envoyer le message</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+
