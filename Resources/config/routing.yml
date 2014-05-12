@@ -13,6 +13,9 @@ produitpagefull:
 contactpage:
     pattern:  /contact
     defaults: { _controller: FklFranklinBundle:Contact:index }
+commandepage:
+    pattern:  /commande
+    defaults: { _controller: FklFranklinBundle:Commande:index }
 admin:
     pattern:  /admin
     defaults: { _controller: FklFranklinBundle:Admin:index }
