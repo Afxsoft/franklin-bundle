@@ -129,10 +129,10 @@ class Command
     /**
      * Add products
      *
-     * @param \Sdz\BlogBundle\Entity\Product $products
+     * @param \Fkl\FranklinBundle\Entity\Product $products
      * @return Command
      */
-    public function addProduct(\Sdz\BlogBundle\Entity\Product $products)
+    public function addProduct(\Fkl\FranklinBundle\Entity\Product $products)
     {
         $this->products[] = $products;
 
@@ -142,9 +142,9 @@ class Command
     /**
      * Remove products
      *
-     * @param \Sdz\BlogBundle\Entity\Product $products
+     * @param \Fkl\FranklinBundle\Entity\Product $products
      */
-    public function removeProduct(\Sdz\BlogBundle\Entity\Product $products)
+    public function removeProduct(\Fkl\FranklinBundle\Entity\Product $products)
     {
         $this->products->removeElement($products);
     }
