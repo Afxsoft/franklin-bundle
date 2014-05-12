@@ -310,10 +310,10 @@ class Product {
     /**
      * Add commands
      *
-     * @param \FklFranklinBundle\Entity\Command $commands
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
      * @return Product
      */
-    public function addCommand(\FklFranklinBundle\Entity\Command $commands)
+    public function addCommand(\Fkl\FranklinBundle\Entity\Command $commands)
     {
         $this->commands[] = $commands;
 
@@ -323,9 +323,9 @@ class Product {
     /**
      * Remove commands
      *
-     * @param \FklFranklinBundle\Entity\Command $commands
+     * @param \Fkl\FranklinBundle\Entity\Command $commands
      */
-    public function removeCommand(\FklFranklinBundle\Entity\Command $commands)
+    public function removeCommand(\Fkl\FranklinBundle\Entity\Command $commands)
     {
         $this->commands->removeElement($commands);
     }
