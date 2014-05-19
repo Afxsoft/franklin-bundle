@@ -83,6 +83,11 @@ class Product {
      * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
      */
     protected $images;
+    
+        /**
+     * @ORM\OneToMany(targetEntity="Installation", mappedBy="product")
+     */
+    protected $installations;
 
         /**
      * @ORM\ManyToMany(targetEntity="Command", mappedBy="products")

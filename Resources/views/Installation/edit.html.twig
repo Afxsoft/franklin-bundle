@@ -1,0 +1,11 @@
+{% extends 'FklFranklinBundle:Installation:common.html.twig' %}
+
+{% set title = 'Installation edit'|trans %}
+
+{% block errors %}{{ form_errors(edit_form) }}{% endblock errors %}
+
+{% block body %}
+
+    {{ form(edit_form) }}
+
+{% endblock %}

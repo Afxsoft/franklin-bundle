@@ -3,7 +3,7 @@ homepage:
     defaults: { _controller: FklFranklinBundle:Home:index }
 installationpage:
     pattern:  /installations
-    defaults: { _controller: FklFranklinBundle:Installation:index }
+    defaults: { _controller: FklFranklinBundle:Installations:index }
 produitpage:
     pattern:  /produits
     defaults: { _controller: FklFranklinBundle:Produit:index }
@@ -71,3 +71,7 @@ FklFranklinBundle_admin_order:
 FklFranklinBundle_admin_user:
         resource: "@FklFranklinBundle/Resources/config/routing/user.yml"
         prefix:   /admin/user
+        
+FklFranklinBundle_admin_installation:
+        resource: "@FklFranklinBundle/Resources/config/routing/installation.yml"
+        prefix:   /admin/installations
