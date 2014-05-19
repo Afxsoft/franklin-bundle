@@ -72,6 +72,7 @@ class Intervention
     private $feedback;
     /**
      * @ORM\ManyToMany(targetEntity="User", inversedBy="interventions")
+     *  @ORM\JoinTable(name="interventions_users")
      */
     private $users;
 

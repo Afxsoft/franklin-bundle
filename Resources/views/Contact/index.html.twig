@@ -13,7 +13,7 @@
 
 {% block body %}
     <div class="row">
-        <form role="form" action="#" class="contact-form container">
+        <form role="form" action="#" method="post" class="contact-form container">
             <h1>Nous contacter</h1>
             <div class="centrage">
                 <div class="jumbotron">
@@ -35,7 +35,7 @@
                     <textarea name="message" class="form-control textarea-box" placeholder="Votre message"></textarea>
                 </div>
                 </div>
-                <button class="btn btn-primary " >Envoyer le message</button>
+                    <input type="submit" class="btn btn-primary " value="Envoyer le message">
             </div>
         </form>
     </div>

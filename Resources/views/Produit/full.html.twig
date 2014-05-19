@@ -9,37 +9,45 @@
     <section class="row">
         <div class="gallery col-md-4">
             <img src="../../{{ product.images[0].path }}" alt="" class="img-responsive default">
-            
+
             <div class="miniature">
                     {% for image in product.images %}
-                <img src="../../{{ image.path }}" alt="" class="img-responsive miniature">
+                    <img src="../../{{ image.path }}" alt="" class="img-responsive miniature">
     {% endfor %}
-             </div>
-            
-        </div>
-        <div class="description col-md-8">
-            <h3>Description :</h3>
-            <p>
-                {{ product.description}}
-                </p>
-                <h3>Référence</h3>
-                <p>
-                {{ product.sku}}
-                    </p>
-                    <h3>Notice</h3>
-                    <p>
-                        Le lien
-                    </p>
-                    <h3>Prix</h3>
-                    <p>
-{{ product.price}} €
-                        </p>
-
-                    </div>
-                    <a href="{{ path('contactpage') }}" class="btn btn-primary">Contacter un commercial</a>
-                </section>
+                </div>
 
             </div>
+            <div class="description col-md-8">
+                <h3>Description :</h3>
+                <p>
+                {{ product.description}}
+                    </p>
+                    <h3>Référence</h3>
+                    <p>
+                {{ product.sku}}
+                        </p>
+                        <h3>Notice</h3>
+                        <p>
+                            Le lien
+                        </p>
+                        <h3>Prix</h3>
+                        <p>
+                {{ product.price}} €
+                            </p>
+                            <h3>Stock</h3>
+                            <p>
+                        {% if (product.quantity>0) %}
+                            {{ product.quantity}} disponibles
+                        {% elseif (product.quantity==1) %}
+                                    En rupture
+
+                        {% endif %}
+                                </p>
+                            </div>
+                            <a href="{{ path('contactpage') }}" class="btn btn-primary">Contacter un commercial</a>
+                        </section>
+
+                    </div>
 {% endblock %}
 
 {% block javascripts %}

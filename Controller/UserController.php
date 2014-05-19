@@ -118,9 +118,20 @@ class UserController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find User entity.');
         }
+        $total = 0;
+        foreach($entity->getCommands() as $order){
+            foreach($order->getProducts() as $product){
+                $total += $product->getPrice();
+            }
+            }
+        
 
+        
         return $this->render('FklFranklinBundle:User:show.html.twig', array(
             'entity'      => $entity,
+            'nbOrders'  => count($entity->getCommands()),
+            'nbInterventions'=> count($entity->getInterventions()),
+            'total' => $total
         ));
     }
 

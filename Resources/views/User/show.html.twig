@@ -41,6 +41,29 @@
         <label>Role:</label>
             {{ entity.role }}
     </li>
+    
+    {% if (entity.role == 'Technicien') %}
+            <li class="list-group-item">
+        <label>Nb interventions:</label>
+            {{ nbInterventions }}
+    </li>
+
+    {%elseif (entity.role == 'Commercial') %}
+        
+        <li class="list-group-item">
+        <label>Nb commandes:</label>
+            {{ nbOrders }}
+    </li>
+            <li class="list-group-item">
+        <label>CA:</label>
+            {{ total }} €
+    </li>
+    {% endif %}
+    
+    
+
+
+    
 </ul>
 
 {% endblock %}
