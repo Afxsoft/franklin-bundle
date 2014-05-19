@@ -16,9 +16,10 @@ $(window).load(function() {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            title: "Lille"
+            title: "Frnaklin domotique"
                     //icon     : "marker_lille.gif" // Chemin de l'image du marqueur pour surcharger celui par défaut
         });
+        map.disableDragging();
     };
     initialize();
 });
