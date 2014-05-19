@@ -1,0 +1,38 @@
+admin_installations_root:
+    pattern:  /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: admin_installations
+        permanent: true
+        
+admin_installations:
+    pattern:  /list/{page}
+    defaults: { _controller: "FklFranklinBundle:Installation:index", page: 1 }
+    requirements:
+        page: .+
+
+admin_installations_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FklFranklinBundle:Installation:show" }
+
+admin_installations_new:
+    pattern:  /new
+    defaults: { _controller: "FklFranklinBundle:Installation:new" }
+
+admin_installations_create:
+    pattern:  /create
+    defaults: { _controller: "FklFranklinBundle:Installation:create" }
+    requirements: { _method: post }
+
+admin_installations_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FklFranklinBundle:Installation:edit" }
+
+admin_installations_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FklFranklinBundle:Installation:update" }
+    requirements: { _method: post|put }
+
+admin_installations_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FklFranklinBundle:Installation:delete" }

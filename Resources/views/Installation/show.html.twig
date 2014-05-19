@@ -1,0 +1,21 @@
+{% extends 'FklFranklinBundle:Installation:common.html.twig' %}
+
+{% set title = 'Installation'|trans %}
+
+{% block body %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <label>Id:</label>
+            {{ entity.id }}
+    </li>
+    <li class="list-group-item">
+        <label>Name:</label>
+            {{ entity.name }}
+    </li>
+    <li class="list-group-item">
+        <label>Video:</label>
+            {{ entity.video }}
+    </li>
+</ul>
+
+{% endblock %}

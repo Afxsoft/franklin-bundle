@@ -1,0 +1,10 @@
+{% extends 'FklFranklinBundle:Installation:common.html.twig' %}
+
+{% set title = 'Delete Installation\'s entry'|trans %}
+
+{% block errors %}{{ form_errors(delete_form) }}{% endblock errors %}
+
+{% block body %}
+<p class="alert alert-danger">{% trans with {'%entity%': 'Installation'} %}Please confirm you want to delete this %entity%'s entry.{% endtrans %}</p>
+{{ form(delete_form) }}
+{% endblock %}
