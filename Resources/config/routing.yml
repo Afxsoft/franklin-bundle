@@ -16,6 +16,9 @@ contactpage:
 commandepage:
     pattern:  /commande
     defaults: { _controller: FklFranklinBundle:Commande:index }
+mentionpage:
+    pattern:  /mentions_legales
+    defaults: { _controller: FklFranklinBundle:Mention:index }
 admin:
     pattern:  /admin
     defaults: { _controller: FklFranklinBundle:Admin:index }
