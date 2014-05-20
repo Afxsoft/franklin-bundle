@@ -16,10 +16,13 @@ $(window).load(function() {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            title: "Frnaklin domotique"
+            title: "Franklin domotique"
                     //icon     : "marker_lille.gif" // Chemin de l'image du marqueur pour surcharger celui par défaut
         });
         map.disableDragging();
     };
     initialize();
+    
+
+    
 });
