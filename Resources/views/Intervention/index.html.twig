@@ -23,7 +23,7 @@
             <tr>
                 <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
-                <td>{% if entity.datefrom %}{{ entity.datefrom|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.datefrom %}{{ entity.datefrom|date('Y-m-d H:i') }}{% endif %}</td>
                 <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.price }}</a></td>
                 <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.address }}</a></td>
                 <td><a href="{{ path('admin_intervention_show', { 'id': entity.id }) }}">{{ entity.zip }}</a></td>
