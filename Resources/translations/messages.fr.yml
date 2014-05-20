@@ -1,0 +1,36 @@
+## YAML Template.
+Delete: Supprimer
+Edit: Modifier
+Id: Id
+Title: Titre
+Date: Date
+Price: Prix
+Address: Adresse
+Zip: Code postal
+City: Ville
+Sku: Ref
+Name: Nom
+Quantity: Quantité
+Notice: Notice
+Description: Description
+Updated: Mise à jour
+Video:  Vidéo
+Mimetype: Type MIME
+Size: Taille 
+Height: Hauteur
+Width: Largeur
+Path: Chemin
+Category list: Liste des catégories
+Product list: Liste des produits
+Installation list: Liste des installations
+Order list: Liste des commandes
+Intervention list: Liste des interventions
+New Image : Nouvelle image
+New Product : Nouveau produit
+New Intervention : Nouvelle intervention
+New Order : Nouvelle commande
+Category: Catégorie
+Image edit: Modification de l'image
+Product edit: Modification du produit
+Oder edit: Modification d'une commande
+Intervention edit: Modification d'une intervention
