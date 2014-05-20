@@ -20,6 +20,7 @@ Size: Taille
 Height: Hauteur
 Width: Largeur
 Path: Chemin
+List: Liste
 Category list: Liste des catégories
 Product list: Liste des produits
 Installation list: Liste des installations
@@ -28,6 +29,7 @@ Intervention list: Liste des interventions
 New Image : Nouvelle image
 New Product : Nouveau produit
 New Intervention : Nouvelle intervention
+New Installation : Nouvelle installation
 New Order : Nouvelle commande
 Category: Catégorie
 Image edit: Modification de l'image
