@@ -32,9 +32,16 @@ class Intervention
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date_from", type="datetime")
      */
-    private $date;
+    private $date_from;
+    
+        /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="date_to", type="datetime")
+     */
+    private $date_to;
 
     /**
      * @var string
@@ -72,6 +79,7 @@ class Intervention
     private $feedback;
     /**
      * @ORM\ManyToMany(targetEntity="User", inversedBy="interventions")
+     *  @ORM\JoinTable(name="interventions_users")
      */
     private $users;
 
@@ -133,29 +141,6 @@ class Intervention
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Intervention
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**
@@ -351,4 +336,6 @@ class Intervention
     {
         return $this->status;
     }
+
+
 }

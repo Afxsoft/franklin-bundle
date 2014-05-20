@@ -32,9 +32,16 @@ class Intervention
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date_from", type="string", length=255)
      */
-    private $date;
+    private $date_from;
+    
+        /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="date_to", type="string", length=255)
+     */
+    private $date_to;
 
     /**
      * @var string
@@ -134,29 +141,6 @@ class Intervention
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Intervention
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**
@@ -351,5 +335,53 @@ class Intervention
     public function getStatus()
     {
         return $this->status;
+    }
+
+
+
+    /**
+     * Set date_from
+     *
+     * @param \DateTime $dateFrom
+     * @return Intervention
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->date_from = $dateFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get date_from
+     *
+     * @return \DateTime 
+     */
+    public function getDateFrom()
+    {
+        return $this->date_from;
+    }
+
+    /**
+     * Set date_to
+     *
+     * @param \DateTime $dateTo
+     * @return Intervention
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->date_to = $dateTo;
+
+        return $this;
+    }
+
+    /**
+     * Get date_to
+     *
+     * @return \DateTime 
+     */
+    public function getDateTo()
+    {
+        return $this->date_to;
     }
 }
