@@ -5,6 +5,7 @@
 {% block body %}
 <div class="produit-liste">
     <h1>Nos installation</h1>
+    <hr>
     <div class="row" >
         
             {% for installation in installations %}
@@ -19,14 +20,6 @@
                                 <div class="item-top-title">
                                     <h5>   {{ installation.name }} </h5>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-add-content">
-                        <div class="item-add-content-inner">
-                            <div class="section">
-                                <br>
-                                <a href="{{ path('produitpagefull', {'id': installation.product.id}) }}" class="btn btn-primary custom-button green-btn">Voir la fiche produit</a>
                             </div>
                         </div>
                     </div>
