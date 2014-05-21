@@ -18,19 +18,18 @@ class CommandeController extends Controller {
             $filter = $request->request->get('sku');
             $command = $em->getRepository('FklFranklinBundle:Command')
                     ->findOneBy(array('sku' => $filter));
-            if($command!=null){
-            $status = $command->getStatus();
-            $percent = $command->getStatus()->getId();
+            if ($command != null) {
+                $status = 'Votre commande est : ' . $command->getStatus();
+                $percent = $command->getStatus()->getId();
+            } else {
+                $status = "La référence n'existe pas";
             }
-            else{
-                $status ="La référence n'existe pas";
-            }
-            }
+        }
 
 
         return $this->render('FklFranklinBundle:Commande:index.html.twig', array(
                     'status' => $status,
-            'percent'=>$percent
+                    'percent' => $percent
         ));
     }
 
