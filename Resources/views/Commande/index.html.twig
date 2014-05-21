@@ -1,9 +1,12 @@
 {% extends 'FklFranklinBundle::base.html.twig' %}
+{% block title %}
+Suivi de commande
+{% endblock %}
 {% block stylesheets %}
 {% endblock %}  
 
 {% block body %}
-<h1>Suivi de commande</h1>
+<h1> Suivi de commande</h1>
 <hr>
 
 <div id="suivicommand">
@@ -20,7 +23,7 @@
         </div>
     </div>
  {% if status %}
-    
+
     <span><span class="glyphicon glyphicon-ok"></span>{{ status }}</span>
 {% else %}
     <span><span class="glyphicon glyphicon-info-sign"></span>Veuillez saisir une commande pour connaitre son etat</span>
