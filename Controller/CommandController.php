@@ -4,7 +4,6 @@ namespace Fkl\FranklinBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Fkl\FranklinBundle\Entity\Command;
 use Fkl\FranklinBundle\Form\CommandType;
 
@@ -12,48 +11,54 @@ use Fkl\FranklinBundle\Form\CommandType;
  * Command controller.
  *
  */
-class CommandController extends Controller
-{
+class CommandController extends Controller {
 
     /**
      * Lists all Command entities.
      *
      */
-    public function indexAction($page = 1)
-    {
-                $role_id= $this->getUser()->getRole()->getId();
+    public function indexAction($page = 1) {
+        $role_id = $this->getUser()->getRole()->getId();
 
         $em = $this->getDoctrine()->getManager();
-        
+
         $count = $em
-            ->getRepository('FklFranklinBundle:Command')
-            ->createQueryBuilder('id')
-            ->select('COUNT(id)')
-            ->getQuery()
-            ->getSingleScalarResult()
+                ->getRepository('FklFranklinBundle:Command')
+                ->createQueryBuilder('id')
+                ->select('COUNT(id)')
+                ->getQuery()
+                ->getSingleScalarResult()
         ;
 
-        $pages = ceil($count / 20);
-                if( $role_id != 4 ){            
-        $entities = $this->getUser()->getCommands();
+        $request = $this->getRequest();
+
+        $filter = null;
+        if ($request->getMethod() == 'POST') {
+            $filter = $request->request->get('sku');
         }
-        else{
-        $entities = $em->getRepository('FklFranklinBundle:Command')
-        ->findBy(array(), NULL, 20, (($page - 1) * 20));
+
+
+        $pages = ceil($count / 20);
+        if ($role_id != 4) {
+            $entities = $this->getUser()->getCommands();
+        } else {
+            $entities = $em->getRepository('FklFranklinBundle:Command')
+                    ->findBy(array(), NULL, 20, (($page - 1) * 20));
         }
 
         return $this->render('FklFranklinBundle:Command:index.html.twig', array(
-            'entities' => $entities,
-            'pages' => $pages,
-            'page' => $page,
+                    'entities' => $entities,
+                    'pages' => $pages,
+                    'page' => $page,
+                    'filter' => $filter
         ));
     }
+
     /**
      * Creates a new Command entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Command();
         $entity->setUser($this->getUser());
         $form = $this->createCreateForm($entity);
@@ -63,28 +68,27 @@ class CommandController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
-                'success', 'The Command has been created.');
+                    'success', 'The Command has been created.');
 
             return $this->redirect($this->generateUrl('admin_order_show', array('id' => $entity->getId())));
         }
 
         return $this->render('FklFranklinBundle:Command:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a Command entity.
-    *
-    * @param Command $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Command $entity)
-    {
+     * Creates a form to create a Command entity.
+     *
+     * @param Command $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Command $entity) {
         $form = $this->createForm(new CommandType(), $entity, array(
             'action' => $this->generateUrl('admin_order_create'),
             'method' => 'POST',
@@ -99,14 +103,13 @@ class CommandController extends Controller
      * Displays a form to create a new Command entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Command();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('FklFranklinBundle:Command:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -114,8 +117,7 @@ class CommandController extends Controller
      * Finds and displays a Command entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FklFranklinBundle:Command')->find($id);
@@ -125,7 +127,7 @@ class CommandController extends Controller
         }
 
         return $this->render('FklFranklinBundle:Command:show.html.twig', array(
-            'entity'      => $entity,
+                    'entity' => $entity,
         ));
     }
 
@@ -133,8 +135,7 @@ class CommandController extends Controller
      * Displays a form to edit an existing Command entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FklFranklinBundle:Command')->find($id);
@@ -146,20 +147,19 @@ class CommandController extends Controller
         $editForm = $this->createEditForm($entity);
 
         return $this->render('FklFranklinBundle:Command:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Command entity.
-    *
-    * @param Command $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Command $entity)
-    {
+     * Creates a form to edit a Command entity.
+     *
+     * @param Command $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Command $entity) {
         $form = $this->createForm(new CommandType(), $entity, array(
             'action' => $this->generateUrl('admin_order_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -169,12 +169,12 @@ class CommandController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Command entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FklFranklinBundle:Command')->find($id);
@@ -188,27 +188,27 @@ class CommandController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
-                'success', 'The Command has been updated.');
-            
+                    'success', 'The Command has been updated.');
+
             return $this->redirect($this->generateUrl('admin_order_show', array('id' => $id)));
         }
 
         return $this->render('FklFranklinBundle:Command:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
         ));
     }
+
     /**
      * Deletes a Command entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $deleteForm = $this->createDeleteForm($id);
         $deleteForm->handleRequest($request);
-        
+
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('FklFranklinBundle:Command')->find($id);
 
@@ -219,16 +219,16 @@ class CommandController extends Controller
 
             $em->remove($entity);
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add(
-                'success', 'The Command has been deleted.');
-            
+                    'success', 'The Command has been deleted.');
+
             return $this->redirect($this->generateUrl('admin_order'));
         }
 
         return $this->render('FklFranklinBundle:Command:delete.html.twig', array(
-                'entity'      => $entity,
-                'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -239,13 +239,13 @@ class CommandController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_order_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('admin_order_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

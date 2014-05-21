@@ -22,6 +22,9 @@ class InterventionController extends Controller {
         $role_id = $this->getUser()->getRole()->getId();
 
         $em = $this->getDoctrine()->getManager();
+                $status = $em->getRepository('FklFranklinBundle:InterventionStatus')->findAll();
+
+        
         $count = $em
                 ->getRepository('FklFranklinBundle:Intervention')
                 ->createQueryBuilder('id')
@@ -31,7 +34,15 @@ class InterventionController extends Controller {
         ;
 
         $pages = ceil($count / 20);
+                $request = $this->getRequest();
 
+        $filter = null;
+        if ($request->getMethod() == 'POST') {
+            $filter = $request->request->get('status');
+
+        }
+        
+        
         if ($role_id != 4) {
             $entities = $this->getUser()->getInterventions();
         } else {
@@ -42,6 +53,8 @@ class InterventionController extends Controller {
                     'entities' => $entities,
                     'pages' => $pages,
                     'page' => $page,
+            'status'=>$status,
+            'filter'=>$filter
         ));
     }
 

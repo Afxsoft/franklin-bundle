@@ -16,4 +16,7 @@ jQuery('#fkl_franklinbundle_intervention_date_from').datetimepicker({
    })
   },
  });
+  jQuery('#fkl_franklinbundle_command_date').datetimepicker({
+  format:'Y-m-d H:i'
+ });
 });

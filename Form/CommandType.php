@@ -15,7 +15,7 @@ class CommandType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('sku')
-                ->add('date', 'datetime', array('date_widget' => 'single_text'))
+                ->add('date', 'text')
                 ->add('infos')
                 ->add('status')
                 ->add('products');
@@ -41,5 +41,7 @@ class CommandType extends AbstractType {
     public function getName() {
         return 'fkl_franklinbundle_command';
     }
+    
+    
 
 }

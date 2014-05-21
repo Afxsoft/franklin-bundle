@@ -2,13 +2,19 @@
 
 namespace Fkl\FranklinBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+
+//Ne pas oubliter ce ``use`` !
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Command
  *
  * @ORM\Table()
  * @ORM\Entity
+ * 
+ * @UniqueEntity("sku")
  */
 class Command
 {
@@ -24,14 +30,14 @@ class Command
     /**
      * @var string
      *
-     * @ORM\Column(name="sku", type="string", length=255)
+     * @ORM\Column(name="sku", type="string", length=255, unique=true)
      */
     private $sku;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="string", length=255)
      */
     private $date;
 

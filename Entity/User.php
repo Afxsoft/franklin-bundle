@@ -6,12 +6,17 @@ use FOS\UserBundle\Model\User as FOSUser;
 use Doctrine\ORM\Mapping as ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Fkl\FranklinBundle\Entity\UserRepository")
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class User extends FOSUser
 {
