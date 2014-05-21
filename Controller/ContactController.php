@@ -18,10 +18,10 @@ class ContactController extends Controller {
             $message = \Swift_Message::newInstance()
                     ->setSubject('Hello Email')
                     ->setFrom($request->request->get('email'))
-                    ->setTo('contact@franklin-domotique.com')
+                    ->setTo('arnaud.wbc@gmail.com')
                     ->setBody($this->renderView('FklFranklinBundle:Contact:email.html.twig', array('email' => $email,'name' => $name,'subject' => $subject,'message' => $message )));
 
-            //$this->get('mailer')->send($message);
+            $this->get('mailer')->send($message);
         }
 
         return $this->render('FklFranklinBundle:Contact:index.html.twig');
