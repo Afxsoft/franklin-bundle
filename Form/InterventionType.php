@@ -16,8 +16,8 @@ class InterventionType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('title')
-                ->add('date_from', 'text')
-                ->add('date_to', 'text')
+                ->add('date_from', 'text',array('label' => 'De'))
+                ->add('date_to', 'text',array('label' => 'à'))
                 ->add('price')
                 ->add('address')
                 ->add('zip')
