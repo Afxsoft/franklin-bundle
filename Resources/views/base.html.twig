@@ -38,6 +38,7 @@
                                     <li><a href="{{ path('commandepage') }}" class="{% if app.request.attributes.get('_route') == 'commamndepage' %}active{% endif %}"><span class="glyphicon glyphicon-transfer"></span>Suivi de commande</a></li>
 
                                 </ul>    
+
                             </nav>
                         </div>
                     </div>   
@@ -56,6 +57,10 @@
                 <div class="container">
                     <nav class="navbar navbar-inverse" role="navigation">
                         <ul class="nav navbar-nav ">
+                            <li class="addthis_toolbox addthis_32x32_style addthis_default_style">
+                                <a class="addthis_button_facebook_follow" addthis:userid="YOUR-PROFILE"></a>
+                                <a class="addthis_button_twitter_follow" addthis:userid="YOUR-USERNAME"></a>
+                            </li>
                             <li><a href={{ path('mentionpage') }} class="">Infos legales</a></li>                      
                             <li><span>Créer par <a href="web-itech.com">Web Itech</a></span></li>
                             <li><span>Copyright 2014 Franklin domotique <span class="glyphicon glyphicon-copyright-mark"></span></span></li>
@@ -71,6 +76,7 @@
        '@FklFranklinBundle/Resources/public/js/script.js'
          %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-506abdf41b59055c"></script>
        {% endjavascripts %}
        {% block javascripts %}{% endblock %}
 
