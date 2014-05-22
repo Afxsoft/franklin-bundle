@@ -51,6 +51,9 @@ hr{
     background:         linear-gradient( left, #ebdac9 0%, #ececec 100%);
     padding: 14px 23px;
 }
+.service-icon:hover{
+    background: #fff !important;
+}
 .center{
     margin-bottom: 40px;
 }
